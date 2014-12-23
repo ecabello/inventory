@@ -19,9 +19,10 @@ module.exports = {
       type: 'string'
     },
 
-    // A Product always belongs to one and only one customer
+    // A Product always belongs to one and only one User
     owner: {
-      model: 'Customer'
+      model: 'User',
+      required: true
     },
 
     // Product transactions

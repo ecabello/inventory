@@ -1,18 +1,17 @@
 /**
- * sessionAuth
+ * isLoggedIn
  *
  * @module      :: Policy
- * @description :: Simple policy to allow any authenticated user
- *                 Assumes that your login action in one of your controllers calls lreq.logIn
+ * @description :: Simple policy that checks if the user is logged in
+ *                 Assumes that your login action in one of your controllers calls req.logIn
  * @docs        :: http://sailsjs.org/#!documentation/policies
  *
  */
 module.exports = function(req, res, next) {
-
   // User is allowed, proceed to controller
   if (req.isAuthenticated())
     return next();
 
   // User is not allowed
-  return res.redirect("/login");
+  return res.forbidden('You need to login to execute this action');
 };

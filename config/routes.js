@@ -46,18 +46,23 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET /login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+
   'POST /login': {
     controller: 'AuthController',
     action: 'process'
   },
 
-  '/login': {
-    controller: 'AuthController',
-    action: 'login'
-  },
-
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
+  },
+
+  'PUT /inventorytransaction': {
+    controller: 'InventoryTransactionController',
+    action: 'affectInventory'
   }
 };

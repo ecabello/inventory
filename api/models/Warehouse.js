@@ -14,9 +14,10 @@ module.exports = {
       required: true
     },
 
-    // A Warehouse always belongs to one and only one customer
+    // A Warehouse always belongs to one and only one User
     owner: {
-      model: 'Customer'
+      model: 'User',
+      required: true
     },
 
     // Warehouse transactions
