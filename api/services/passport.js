@@ -1,6 +1,6 @@
 var passport = require('passport'),
-LocalStrategy = require('passport-local').Strategy,
-bcrypt = require('bcryptjs');
+LocalStrategy = require('passport-local').Strategy;
+
 
 // Passport session support.
 // In a typical web application, the credentials used to authenticate a user will
@@ -39,6 +39,7 @@ passport.use(new LocalStrategy(
       if (!user)
         return done(null, false, { message: 'Unknown user ' + username });
 
+      var bcrypt = require('bcryptjs');
       // Hash compare
       bcrypt.compare(password, user.password, function (err, res) {
         if (!res)

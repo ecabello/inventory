@@ -9,8 +9,8 @@
 var bcrypt = require('bcryptjs');
 
 module.exports = {
-  // Minimal set of attributes required for authentication
   attributes: {
+    // Minimal set of attributes required for authentication
     username: {
       type: 'string',
       required: true,
@@ -20,6 +20,29 @@ module.exports = {
       type: 'string',
       required: true
     },
+
+    // We need a name to refer to the customer
+    name: {
+      type: 'string'
+    },
+
+    // Individual | Business | Other
+    type: {
+      type: 'string',
+      required: true,
+      enum: ['individual', 'business', 'other']
+    },
+    //  Warehouses owned/operated by this customer
+    warehouses: {
+      collection: 'Warehouse',
+      via: 'owner'
+    },
+    // Products owned by this customer
+    products: {
+      collection: 'Product',
+      via: 'owner'
+    },
+
     toJSON: function() {
       var obj = this.toObject();
       // There is no valid reason to ever return a password

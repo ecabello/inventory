@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': true,
 
   /***************************************************************************
   *                                                                          *
@@ -34,18 +34,16 @@ module.exports.policies = {
   * and its actions                                                          *
   *                                                                          *
   ***************************************************************************/
-	// RabbitController: {
+  InventoryTransactionController: {
+		// Apply the `false` policy as the default for all of InventoryTransactionController's actions
+		// (`false` prevents all access, which ensures that nothing bad happens to the inventory)
+		'*': false,
 
-		// Apply the `false` policy as the default for all of RabbitController's actions
-		// (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-		// '*': false,
+    // In order to affect Inventory you need to:
+    // -be logged in
+    // -have access to the warehouse
+    // -Have permission to affect inventory for the product
+    affectInventory: ['isLoggedIn', 'canAccessWarehouse', 'canAffectInventory']
 
-		// For the action `nurture`, apply the 'isRabbitMother' policy
-		// (this overrides `false` above)
-		// nurture	: 'isRabbitMother',
-
-		// Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
-		// before letting any users feed our rabbits
-		// feed : ['isNiceToAnimals', 'hasRabbitFood']
-	// }
+	}
 };
