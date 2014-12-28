@@ -29,6 +29,12 @@ module.exports = {
     transactions: {
       collection: 'InventoryTransaction',
       via: 'product'
+    },
+
+    locked: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
     }
   }
 };

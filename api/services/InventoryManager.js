@@ -16,34 +16,48 @@ module.exports = {
 
   // For now  you can always add to a warehouse
   addStock: function(warehouse, product, quantity, cb) {
-    var transaction = {
-      warehouse: warehouse,
-      product: product,
-      quantity: quantity
-    };
-    InventoryTransaction.create(transaction, cb);
+    ModelLock.lock(product, 'p', function(err, p) {
+      if (err)
+        return cb(err, null);
+      if (!p)
+        return cb(new Error('Unable to lock Product'), null);
+
+      var transaction = {
+        warehouse: warehouse,
+        product: product,
+        quantity: quantity
+      };
+      InventoryTransaction.create(transaction, cb);
+    });
   },
 
   removeStock: function(warehouse, product, quantity, cb) {
-    // First we need to check how much stock we currently have
-    InventoryTransaction.find({
-      warehouse: warehouse,
-      product: product
-    }).sum('quantity').exec(function(err, existing){
-      if (err && cb)
+    ModelLock.lock(product, 'p', function(err, p) {
+      if (err)
         return cb(err, null);
+      if (!p)
+        return cb(new Error('Unable to lock Product'), null);
 
-      var existingqty = (!existing || existing.length==0) ? 0 : existing[0].quantity;
-      if ((existingqty + quantity) >= 0) {
-        var transaction = {
-          warehouse: warehouse,
-          product: product,
-          quantity: quantity
-        };
-        InventoryTransaction.create(transaction, cb);
-      }
-      else if (cb)
-        cb(new Error('Not enough stock to satisfy removal'), null);
+      // First we need to check how much stock we currently have
+      InventoryTransaction.find({
+        warehouse: warehouse,
+        product: product
+      }).sum('quantity').exec(function(err, existing){
+        if (err && cb)
+          return cb(err, null);
+
+        var existingqty = (!existing || existing.length==0) ? 0 : existing[0].quantity;
+        if ((existingqty + quantity) >= 0) {
+          var transaction = {
+            warehouse: warehouse,
+            product: product,
+            quantity: quantity
+          };
+          InventoryTransaction.create(transaction, cb);
+        }
+        else if (cb)
+          cb(new Error('Not enough stock to satisfy removal'), null);
+      });
     });
   }
 };
