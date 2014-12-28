@@ -1,7 +1,7 @@
 /**
  * UserController
  *
- * @description :: Server-side logic for managing users
+ * @description :: Server-side logic for managing users and login functionality
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
