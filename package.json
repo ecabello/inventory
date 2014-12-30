@@ -47,7 +47,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/cloudinv.git"
+    "url": "git://github.com/ecabello/inventory.git"
   },
   "author": "ecabello & rguerra",
   "license": "Proprietary"
