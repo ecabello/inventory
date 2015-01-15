@@ -56,6 +56,36 @@ module.exports.routes = {
     action: 'processLogin'
   },
 
+  '/google/login': {
+    controller: 'UserController',
+    action: 'googleLogin'
+  },
+
+  '/google/return': {
+    controller: 'UserController',
+    action: 'googleLogin'
+  },
+
+  '/facebook/login': {
+    controller: 'UserController',
+    action: 'facebookLogin'
+  },
+
+  '/facebook/return': {
+    controller: 'UserController',
+    action: 'facebookLogin'
+  },
+
+  '/twitter/login': {
+    controller: 'UserController',
+    action: 'twitterLogin'
+  },
+
+  '/twitter/return': {
+    controller: 'UserController',
+    action: 'twitterLogin'
+  },
+
   '/logout': {
     controller: 'UserController',
     action: 'logout'
