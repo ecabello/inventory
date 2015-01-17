@@ -39,14 +39,17 @@ setTimeout(function sunrise () {
                     </p>
                 </div>
             </li>
-            <li class="clearfix">
                 <div class="step">
+            <li class="clearfix">
                     <div class="sprite three"></div>
                     <h3>
-                        Dive in.
+                        Login in.
                     </h3>
-                    <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://sailsjs.org/#/documentation/concepts/Routes">routes</a>, set up <a href="http://sailsjs.org/#/documentation/concepts/Policies">security policies</a>, configure your <a href="http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html">data sources</a>, and build custom <a target="_blank" href="http://sailsjs.org/#/documentation/concepts/Controllers?q=actions">controller actions</a>. For more help getting started, check out the links on this page.</p>
-
+                      <p>To login using the Local strategy simply HTTP POST username and password to <a href="/login">/login</a></p>
+                      <p>To initiate Facebook login browse to <a href="/facebook/login">/facebook/login</a></p>
+                      <p>To initiate Twitter login browse to <a href="/twitter/login">/twitter/login</a></p>
+                      <p>To initiate Google login browse to <a href="/google/login">/google/login</a></p>
+                      <p>Login attemps generate an HTTP 200 response with appropriate message<br>Success returns a "login successful" message while failure returns a "login failed" message</p>
                 </div>
             </li>
         </ul>

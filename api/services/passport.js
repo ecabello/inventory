@@ -113,7 +113,7 @@ passport.initStrategies=function() {
   passport.use(new GoogleStrategy({
     clientID: '236188842599-kotmjf2ba9002spg42n4bjgrtqng4mlr.apps.googleusercontent.com',
     clientSecret: 'PdgdRaq8VJC6EZjS5-Epf9RF',
-    callbackURL: 'http://localhost:1337/google/return',
+    callbackURL: 'https://nameless-island-7983.herokuapp.com/google/return',
   }, socialVerify));
 
   passport.use(new TwitterStrategy({
