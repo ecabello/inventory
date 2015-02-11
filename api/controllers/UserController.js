@@ -38,6 +38,11 @@ module.exports = {
   },
 
   googleLogin: function(req, res) {
+    var success = req.param('success');
+    var fail = req.param('fail');
+    sails.log.info('success: ' + success);
+    sails.log.info('fail: ' + fail);
+
     passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login', 'email']},
       function(err, user) {
         return loginCallback(err, user, 'Google', req, res);

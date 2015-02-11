@@ -16,7 +16,7 @@ module.exports = {
     type: {
       type: 'string',
       required: true,
-      enum: ['general', 'warehouse', 'product']
+      enum: ['general', 'warehouse', 'product', 'category', 'catalog']
     },
 
     action: {

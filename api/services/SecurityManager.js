@@ -32,6 +32,16 @@ module.exports = {
     this.checkPermission(user, 'product', action, productId, cb);
   },
 
+  //  Checking for Category permissions (e.g. access, add, remove)
+  checkProductCategoryPermission: function(user, action, categoryId, cb) {
+    this.checkPermission(user, 'category', action, categoryId, cb);
+  },
+
+  //  Checking for Catalog permissions (e.g. access, add, remove)
+  checkCatalogPermission: function(user, action, categoryId, cb) {
+    this.checkPermission(user, 'catalog', action, categoryId, cb);
+  },
+
   //  They all call here
   checkPermission: function(user, type, action, ref, cb) {
     // Build permission search criteria

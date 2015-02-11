@@ -98,28 +98,26 @@ passport.initStrategies=function() {
   };
 
   passport.use(new GitHubStrategy({
-    clientID: "YOUR_CLIENT_ID",
-    clientSecret: "YOUR_CLIENT_SECRET",
-    callbackURL: "http://localhost:1337/github/return"
+    clientID: sails.config.github.clientID,
+    clientSecret: sails.config.github.clientSecret,
+    callbackURL: sails.config.github.callbackURL
   }, socialVerify));
 
   passport.use(new FacebookStrategy({
-    clientID: "624281547701619",
-    clientSecret: "edcdde6c19ce96711c6cb2e451039d8e",
-    //callbackURL: "http://localhost:1337/facebook/return"
-    callbackURL: "https://nameless-island-7983.herokuapp.com/facebook/return"
+    clientID: sails.config.facebook.clientID,
+    clientSecret: sails.config.facebook.clientSecret,
+    callbackURL: sails.config.facebook.callbackURL
   }, socialVerify));
 
   passport.use(new GoogleStrategy({
-    clientID: '236188842599-kotmjf2ba9002spg42n4bjgrtqng4mlr.apps.googleusercontent.com',
-    clientSecret: 'PdgdRaq8VJC6EZjS5-Epf9RF',
-    callbackURL: 'https://nameless-island-7983.herokuapp.com/google/return',
+    clientID: sails.config.google.clientID,
+    clientSecret: sails.config.google.clientSecret,
+    callbackURL: sails.config.google.callbackURL
   }, socialVerify));
 
   passport.use(new TwitterStrategy({
-    consumerKey: 'x0UbWhxkG0MVlYXk8e8xhkS05',
-    consumerSecret: '6rmGDeSQwU348HAYznqOi3HgMHKdkZMWovO8O5fUXVNlxDK2FK',
-    //callbackURL: 'http://localhost:1337/twitter/return'
-    callbackURL: "https://nameless-island-7983.herokuapp.com/twitter/return"
+    consumerKey: sails.config.twitter.consumerKey,
+    consumerSecret: sails.config.twitter.consumerSecret,
+    callbackURL: sails.config.twitter.callbackURL
   }, socialVerify));
 };
