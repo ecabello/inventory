@@ -39,14 +39,30 @@ setTimeout(function sunrise () {
                     </p>
                 </div>
             </li>
-            <li class="clearfix">
                 <div class="step">
+            <li class="clearfix">
                     <div class="sprite three"></div>
                     <h3>
-                        Dive in.
+                        Login in.
                     </h3>
-                    <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://sailsjs.org/#/documentation/concepts/Routes">routes</a>, set up <a href="http://sailsjs.org/#/documentation/concepts/Policies">security policies</a>, configure your <a href="http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html">data sources</a>, and build custom <a target="_blank" href="http://sailsjs.org/#/documentation/concepts/Controllers?q=actions">controller actions</a>. For more help getting started, check out the links on this page.</p>
-
+                      <p>To login using the Local strategy simply HTTP POST username and password to <a href="/login">/login</a></p>
+                      <p>To initiate Facebook login browse to <a href="/facebook/login">/facebook/login</a></p>
+                      <p>To initiate Twitter login browse to <a href="/twitter/login">/twitter/login</a></p>
+                      <p>To initiate Google login browse to <a href="/google/login?success=root&fail=fail">/google/login</a></p>
+                      <p>Login attemps generate an HTTP 200 response with appropriate message<br>Success returns a "login successful" message while failure returns a "login failed" message</p>
+                      <p>***</p>
+                    <h3>
+                          APIs.
+                    </h3>
+                      <p>The Catalog System is mostly composed of three main objects: Catalogs, Categories and Products</p>
+                      <p>Catalogs are simply a collection of Products organized under Categories</p>
+                      <p>To create most objects simply post json to specific path like <a href="/catalog">/catalog</a>, <a href="/category">/category</a> or <a href="/product">/product</a></p>
+                      <p>{<br>&nbsp;&nbsp;&nbsp;name: 'name',<br>&nbsp;&nbsp;&nbsp;owner: 'owner.userId'<br>}</p>
+                      <p>To associate a Product with Categories</p>
+                      <p>{<br>&nbsp;&nbsp;&nbsp;name: 'name',<br>&nbsp;&nbsp;&nbsp;owner: 'owner.userId'<br>&nbsp;&nbsp;&nbsp;categories: [cat1.id,cat2.id,cat3.id]<br>}</p>
+                      <p>The same can be done to associate Categories with a Catalog</p>
+                      <p>To retrieve any of the objects simply HTTP GET and append the object id</p>
+                      <p>(e.g. <a href="/catalog">/catalog/catalog.id</a>)</p>
                 </div>
             </li>
         </ul>

@@ -14,15 +14,16 @@ module.exports = {
       required: true
     },
 
-    // optional
-    sku: {
-      type: 'string'
-    },
-
     // A Product always belongs to one and only one User
     owner: {
       model: 'User',
       required: true
+    },
+
+    // What categories this product belongs to
+    categories: {
+      collection: 'Category',
+      via: 'products'
     },
 
     // Product transactions

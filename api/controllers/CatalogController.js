@@ -1,10 +1,11 @@
 /**
- * WarehouseController
+ * CatalogController
  *
- * @description :: Server-side logic for managing Warehouses
+ * @description :: Server-side logic for managing Catalogs
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
 module.exports = {
-
+	
 };
+
