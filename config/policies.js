@@ -28,12 +28,33 @@ module.exports.policies = {
 
   '*': true,
 
-  /***************************************************************************
-  *                                                                          *
-  * Here's an example of mapping some policies to run before a controller    *
-  * and its actions                                                          *
-  *                                                                          *
-  ***************************************************************************/
+  // Make sure Owner is set appropriately when creating and
+  // doesnt get overwritten whe updating.
+  ProductController: {
+    create: ['setLoggedUserAsOwner'],
+    update:  ['isLoggedIn', 'preventOwnerChange'],
+    destroy: ['isLoggedIn']
+  },
+
+  CategoryController: {
+    create: ['setLoggedUserAsOwner'],
+    update:  ['isLoggedIn', 'preventOwnerChange'],
+    destroy: ['isLoggedIn']
+  },
+
+  CatalogController: {
+    create: ['setLoggedUserAsOwner'],
+    update:  ['isLoggedIn', 'preventOwnerChange'],
+    destroy: ['isLoggedIn']
+  },
+
+  WarehouseController: {
+    create: ['setLoggedUserAsOwner'],
+    update:  ['isLoggedIn', 'preventOwnerChange'],
+    destroy: ['isLoggedIn']
+  },
+
+  // Enrty point for affecting Inventory
   InventoryTransactionController: {
 		// Apply the `false` policy as the default for all of InventoryTransactionController's actions
 		// (`false` prevents all access, which ensures that nothing bad happens to the inventory)
@@ -44,6 +65,5 @@ module.exports.policies = {
     // -have access to the warehouse
     // -Have permission to affect inventory for the product
     affectInventory: ['isLoggedIn', 'canAccessWarehouse', 'canAffectInventory']
-
 	}
 };
