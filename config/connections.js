@@ -42,7 +42,8 @@ module.exports.connections = {
   ***************************************************************************/
   mongodbServer: {
     adapter: 'sails-mongo',
-    url: process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sails'
+    url: process.env.MONGOLAB_URI || 'mongodb://invcloud:12monkeys@ds029801.mongolab.com:29801/invcloud'
+    //'mongodb://localhost:27017/sails'
     //host: 'localhost',
     //port: 27017,
     // user: 'username',
