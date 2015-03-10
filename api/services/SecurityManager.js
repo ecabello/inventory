@@ -15,7 +15,7 @@
 *     handle permission granted
 *   }
 */
-
+ 
 module.exports = {
   //  Used to check for General system permissions (e.g. admin)
   checkGeneralPermission: function(user, action, cb) {

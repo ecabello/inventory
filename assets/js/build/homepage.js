@@ -1,15 +1,13 @@
 var React = require('react');
-var TitlePage = require('./titlepage.js');
-var Orbit = require('./orbit.js');
-var TodoList = require('./todo.js');
-
-var HomePage = React.createClass({displayName: 'HomePage',
- 	render : function () {
- 		return (
- 			React.createElement("div", {className: "row"}, 
- 				React.createElement(TitlePage, {title: "home page"})
- 			)
- 			);
- 	}
+var Home = React.createClass({displayName: "Home",
+	render : function () {
+		return (
+			React.createElement("div", {className: "small-8 columns small-centered"}, 
+		    	React.createElement("h1", null, "Hello, here the best invetory system!"), 
+		    	React.createElement("p", null, "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."), 
+ 		    	React.createElement("p", null, React.createElement("a", {href: "#cpanel"}, "Control Panel"))
+		    )	
+			);
+	}
 });
-module.exports = HomePage;
+module.exports = Home;

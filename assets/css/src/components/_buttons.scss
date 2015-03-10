@@ -1,0 +1,51 @@
+.btn-topbar {
+	margin-top: 8px;
+	height: 35px !important;
+	padding: 1px 30px !important;
+	font-size: 15px !important;
+	background-color: #43bfbf !important;
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.btn-action {
+	display: inline-block;
+	border: 1px solid;
+	height: 30px;
+	padding: 7px 10px;
+	border-radius: 5px;
+	&.remove {
+		border-color : red;
+		color : red;
+		&:hover {
+			color : white;
+			background-color : red;
+		}
+	}
+	&.edit {
+		border-color : #2ba6cb;
+		color : #2ba6cb;
+		&:hover {
+			color : white;
+			background-color : #2ba6cb;
+		}
+	}
+}
+
+.custom-button-group {
+	margin-left : 5px;
+	li:not(:last-child) {
+		margin-right : 10px;
+	}
+	li {
+		a.btn-action {
+			padding-top : 4px;
+		}
+	}
+}
+
+
+
+

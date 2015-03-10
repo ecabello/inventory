@@ -28,7 +28,7 @@
 module.exports = {
 
   login: function (req, res) {
-    res.view();
+    res.render('user/login',{ name : 'Rey'});
   },
 
   processLogin: function(req, res){

@@ -1,0 +1,23 @@
+input {
+	height : 40px !important;
+}
+
+select {
+	height : 40px !important;
+	border-radius : 0px;
+	border: 1px solid #ccc;
+	background-color : white;
+}
+
+textarea {
+	height : 120px;
+}
+
+img.galery {
+	border :  1px solid #ccc;
+	padding : 5px;
+	border-radius : 5px;
+	&:hover {
+		opacity: 0;
+	}
+}

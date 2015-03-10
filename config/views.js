@@ -30,6 +30,7 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  engine: 'handlebars',
+  engine: 'handlebars', 
+  layout: 'layouts/layout'
 
 };

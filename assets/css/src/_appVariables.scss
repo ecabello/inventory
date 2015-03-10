@@ -1,7 +1,24 @@
 /* COLORS */
-$main-bg-color : #019934;
+$main-bg-color : #0e74af;
+$sec-bg-color : #dfeaf2;
+$input-focus-border-color: $main-bg-color;
+$input-prefix-bg: $main-bg-color;
+$input-prefix-border-color: $main-bg-color;
+$main-text-color : #666; 
 
 
 /* TOP BAR */
 $topbar-height: 65px;
 $topbar-bg: $main-bg-color; 
+$topbar-margin-bottom: 0px;
+$topbar-title-font-size: rem-calc(17);
+
+/* Button */
+$button-border-width: 0px;
+ 
+/* GRID */
+$row-width: 100%;
+
+/* FORMS */
+$form-label-font-size: rem-calc(28);
+

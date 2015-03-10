@@ -1,60 +1,73 @@
-var $ = require('jquery'); 
-var _ = require('underscore');
+var $ = require('jquery');
 var React = require('react');
-var Backbone = require('backbone');  
-    
+var Router = require('react-router');       
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var NotFoundRoute = Router.NotFoundRoute; 
+var Redirect = Router.Redirect;
+var RouteHandler = Router.RouteHandler;  
+  
+var MainNavBar = require('./components/MainNavBar'); 
+var Home = require('./homePage');
+var Login = require('./loginPage');
+var UnderConst = require('./components/underConst');
+var CpanelPage = require('./cpanel');
 
-var TopBar = require('./topbar.js');
-var AppContent = require('./appcontent.js');
+var CategoryList = require('./components/CategoryBox');  
+var AddCategory = require('./components/AddCategory');
+
+var Products = require('./components/Products');
+var AddProduct = require('./components/AddProduct');            
 
 
-var workSpace = Backbone.Router.extend({
-	routes : {
-		'' 			: 'index',
-		'home' 		: 'changedUrl',
-		'products'	: 'changedUrl',
-		'grower'	: 'changedUrl',
-		'contact'	: 'changedUrl',
-		'*default'  : 'index'
-	},
-	changedUrl : function (route,params) {
-		this.trigger('change','home');
-	},
-	index : function () {
-		this.navigate('home');
-	}
-});
+
  
 
 var App = React.createClass({
+	mixins: [Router.State],
 	getInitialState : function () {
-        return { action : '#home' };
+        return { action : '#home' };     
 	},
 	componentDidMount : function () {
-		this.props.router.on('change',function(action) {
-			console.log(window.location.hash);
-			this.setState({ action : window.location.hash });
-		}.bind(this))
+		
 	},
 	render : function () {
 	    return (
-	    	<div>
-		      	<TopBar name="Inventary" />
-		      	<AppContent action={this.state.action} />	
-		    </div>  	
+	    	<div onClick={this.onClick}>
+				<MainNavBar />
+				<RouteHandler />   
+			</div>	
 	    );  	
+	},
+	onClick : function () {
+		alert('OK');   
 	}
 }); 
 
+var routes = (
+  <Route handler={App} path="/"> 
+    <DefaultRoute handler={Home} />
+    <Route handler={Login} path="login" />
+    <Route handler={UnderConst} path="signup" />
+    <Route handler={CpanelPage} path="cpanel">
+    	<Route name='category' path='category' handler={CategoryList} />
+    		<Route name='add-category' path='category/add' handler={AddCategory} />
+    	<Route name='product' path='product' handler={Products} />
+    		<Route name='add-product' path='product/add' handler={AddProduct} />
+    	<Route name='social' path='social' handler={UnderConst} />
+    	<Route name='locations' path='locations' handler={UnderConst} />
+    	<Route name='contact-info' path='contact-info' handler={UnderConst} />
+    	<NotFoundRoute handler={UnderConst}/>  
+    </Route>
+  </Route>
+);
 
 $(document).ready(function () {
-    
-    var routerApp = new workSpace();
-    Backbone.history.start();
-    
-    React.render(
-		<App  router={routerApp}/>,
-	   	document.getElementById('app') 
-	); 
-
+	Router.run(routes, function (Handler) {
+	  React.render(<Handler/>, document.getElementById('app'));
+	});
 });
+
+
+
+

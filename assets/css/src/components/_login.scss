@@ -1,0 +1,21 @@
+input,select {
+	&.large {
+		height: 46px;
+		font-size: 15px;
+	}
+	&.w-mid {
+		width: 110px;
+	}
+}
+
+.btn-login {
+	background-color : #43bfbf;
+	color : white;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.btn-block {
+	margin : 5px 0px !important;
+}

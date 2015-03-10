@@ -1,5 +1,17 @@
 @import "./appVariables";
 @import "foundation/scss/foundation"; 
 @import "font-awesome/stylesheets/font-awesome";
-@import "component/orbit/orbit";
+
+@import "./components/components"; 
+
+#app {
+	width : 100%;
+	min-width : 1200px;
+	height : 100%;
+
+	.appContainer {
+		height: 100%;    
+		display : block;
+	}
+}
 
