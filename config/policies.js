@@ -33,25 +33,29 @@ module.exports.policies = {
   ProductController: {
     create: ['setLoggedUserAsOwner'],
     update:  ['isLoggedIn', 'preventOwnerChange'],
-    destroy: ['isLoggedIn']
+    destroy: ['isLoggedIn'],
+    myProducts: ['isLoggedIn']
   },
 
   CategoryController: {
     create: ['setLoggedUserAsOwner'],
     update:  ['isLoggedIn', 'preventOwnerChange'],
-    destroy: ['isLoggedIn']
+    destroy: ['isLoggedIn'],
+    myCategories: ['isLoggedIn']
   },
 
   CatalogController: {
     create: ['setLoggedUserAsOwner'],
     update:  ['isLoggedIn', 'preventOwnerChange'],
-    destroy: ['isLoggedIn']
+    destroy: ['isLoggedIn'],
+    myCatalogs: ['isLoggedIn']
   },
 
   WarehouseController: {
     create: ['setLoggedUserAsOwner'],
     update:  ['isLoggedIn', 'preventOwnerChange'],
-    destroy: ['isLoggedIn']
+    destroy: ['isLoggedIn'],
+    myWarehouses: ['isLoggedIn']
   },
 
   // Enrty point for affecting Inventory

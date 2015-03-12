@@ -20,6 +20,7 @@
        return res.send(err);
 
      return res.send({
+       user: user.id,
        message: 'login successful'
      });
    });

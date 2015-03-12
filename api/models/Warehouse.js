@@ -24,6 +24,13 @@ module.exports = {
     transactions: {
       collection: 'InventoryTransaction',
       via: 'warehouse'
+    },
+
+    toJSON: function() {
+      var obj = this.toObject();
+      if ('owner' in obj && typeof obj.owner === 'object')
+        obj.owner = obj.owner.id;
+      return obj;
     }
   }
 };
