@@ -3,6 +3,7 @@ var React = require('react');
 
 var MainNavBar = React.createClass({
 	render : function () {
+		var Actions = this.props.actions;
 		return (
 			<nav className="top-bar" data-topbar role="navigation">
 			    <ul className="title-area">
@@ -11,13 +12,7 @@ var MainNavBar = React.createClass({
 			    	</li>
 				    <li className="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
 	    		</ul>
-			    <section className="top-bar-section">
-			        <ul className="right">
-			            <li className="has-form">
-			            	<a className='button btn-topbar' href="#login">Login</a>
-			            </li>
-			        </ul>
-    			</section>
+			    <Actions />
 			</nav>
 		);    
 	}

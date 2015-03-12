@@ -3,6 +3,7 @@ var React = require('react');
 
 var MainNavBar = React.createClass({displayName: "MainNavBar",
 	render : function () {
+		var Actions = this.props.actions;
 		return (
 			React.createElement("nav", {className: "top-bar", "data-topbar": true, role: "navigation"}, 
 			    React.createElement("ul", {className: "title-area"}, 
@@ -11,7 +12,7 @@ var MainNavBar = React.createClass({displayName: "MainNavBar",
 			    	), 
 				    React.createElement("li", {className: "toggle-topbar menu-icon"}, React.createElement("a", {href: "#"}, React.createElement("span", null, "Menu")))
 	    		), 
-			     this.props.actions
+			    React.createElement(Actions, null)
 			)
 		);    
 	}

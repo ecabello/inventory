@@ -1,5 +1,6 @@
 module.exports = {
 	renderApp : function (req,res) {
-		res.render('index', { mainJS : 'main'});
+		var jsfile = !req.user ? 'public' : 'auth';
+		res.render('index', { mainJS : jsfile });
 	}
 }

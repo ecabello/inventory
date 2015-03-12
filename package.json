@@ -7,9 +7,8 @@
   "browser": {
     "jquery": "./assets/js/vendor/jquery.js",
     "underscore": "./assets/js/vendor/underscore.js",
-    "backbone": "./assets/js/vendor/backbone.js",
-    "react": "./node_modules/react/dist/react-with-addons.js"
-  },
+    "backbone": "./assets/js/vendor/backbone.js"
+  },  
   "browserify-shim": {
     "jquery": "$",
     "underscore": "_",
