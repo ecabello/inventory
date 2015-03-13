@@ -9096,6 +9096,15 @@ img.galery:hover {
   opacity: 0;
 }
 
+/* line 2, src/components/_texts.scss */
+h5.alert-text {
+  color: #901414 !important;
+}
+/* line 5, src/components/_texts.scss */
+h5.success-text {
+  color: green;
+}
+
 /* line 7, src/main.scss */
 #app {
   width: 100%;

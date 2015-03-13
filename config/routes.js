@@ -57,6 +57,11 @@ module.exports.routes = {
     action: 'processLogin'
   },
 
+  'GET /user': {
+    controller: 'UserController',
+    action: 'logged'
+  },
+
   '/google/login': {
     controller: 'UserController',
     action: 'googleLogin'
@@ -120,5 +125,9 @@ module.exports.routes = {
   'GET /warehouse': {
     controller: 'WarehouseController',
     action: 'myWarehouses'
-  }
+  },
+
+  '/upload':{
+    view: 'upload'  // view 'uploadfile' in views directory will loaded automatically
+  },
 };

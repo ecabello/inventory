@@ -7,9 +7,10 @@ var NotFoundRoute = Router.NotFoundRoute;
 var Redirect = Router.Redirect;
 var RouteHandler = Router.RouteHandler;  
   
-var MainNavBar = require('./components/MainNavBar'); 
+var MainNavBar = require('./components/Topbar/MainNavBar');
+var AuthActions = require('./components/Topbar/AuthActions');
+
 var Home = require('./homePage');
-var Login = require('./loginPage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
 
@@ -20,36 +21,25 @@ var Products = require('./components/Products');
 var AddProduct = require('./components/AddProduct');            
 
 
-
+ 
  
 
-var App = React.createClass({displayName: "App",
+var App = React.createClass({displayName: "App", 
 	mixins: [Router.State],
-	getInitialState : function () {
-        return { action : '#home' };     
-	},
-	componentDidMount : function () {
-		
-	},
 	render : function () {
 	    return (
-	    	React.createElement("div", {onClick: this.onClick}, 
-				React.createElement(MainNavBar, null), 
+	    	React.createElement("div", null, 
+				React.createElement(MainNavBar, {actions: AuthActions}), 
 				React.createElement(RouteHandler, null)
 			)	
 	    );  	
-	},
-	onClick : function () {
-		alert('OK');   
 	}
 }); 
 
 var routes = (
   React.createElement(Route, {handler: App, path: "/"}, 
     React.createElement(DefaultRoute, {handler: Home}), 
-    React.createElement(Route, {handler: Login, path: "login"}), 
-    React.createElement(Route, {handler: UnderConst, path: "signup"}), 
-    React.createElement(Route, {handler: CpanelPage, path: "cpanel"}, 
+    React.createElement(Route, {handler: CpanelPage, path: "cpanel", name: "cpanel"}, 
     	React.createElement(Route, {name: "category", path: "category", handler: CategoryList}), 
     		React.createElement(Route, {name: "add-category", path: "category/add", handler: AddCategory}), 
     	React.createElement(Route, {name: "product", path: "product", handler: Products}), 
@@ -59,7 +49,7 @@ var routes = (
     	React.createElement(Route, {name: "contact-info", path: "contact-info", handler: UnderConst}), 
     	React.createElement(NotFoundRoute, {handler: UnderConst})
     )
-  )
+  ) 
 );
 
 $(document).ready(function () {

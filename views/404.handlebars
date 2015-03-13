@@ -54,8 +54,8 @@
           Something's fishy here.
         </h1>
         <h2>
-        	{{#if error}}
-            {{error}}
+        	{{#if data.message}}
+            {{data.message}}
           {{else}}
             The page you were trying to reach doesn't exist.
           {{/if}}

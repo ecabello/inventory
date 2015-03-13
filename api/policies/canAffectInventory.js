@@ -10,10 +10,10 @@ module.exports = function(req, res, next) {
   var userId = req.user.id;
   var productId = req.param('product'); //req.body.product;
   if (!productId)
-    return res.serverError('No product specified');
+    return res.badRequest('No product specified');
   var quantity = req.param('quantity'); //req.body.quantity;
   if (!quantity)
-    return res.serverError('No quantity specified');
+    return res.badRequest('No quantity specified');
 
   var action = (quantity > 0) ? 'add' : 'remove';
 

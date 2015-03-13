@@ -47,6 +47,9 @@ module.exports = function badRequest(data, options) {
   // If it was omitted, use an empty object (`{}`)
   options = (typeof options === 'string') ? { view: options } : options || {};
 
+  // Avoid handlebars error that tries to find 'root' in data
+  data = (typeof data === 'string') ? {message : data } : data || {};
+
   // If a view was provided in options, serve it.
   // Otherwise try to guess an appropriate view, or if that doesn't
   // work, just send JSON.

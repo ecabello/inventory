@@ -22,7 +22,7 @@
 // no matter where we actually lift from.
 process.chdir(__dirname);
 
-// Ensure a "sails" can be located:
+// Ensure a "sails" can be located: 
 (function() {
   var sails;
   try {
@@ -40,7 +40,7 @@ process.chdir(__dirname);
   // Try to get `rc` dependency
   var rc;
   try {
-    rc = require('rc');
+    rc = require('rc');   
   } catch (e0) {
     try {
       rc = require('sails/node_modules/rc');
