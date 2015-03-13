@@ -8,7 +8,7 @@
     "jquery": "./assets/js/vendor/jquery.js",
     "underscore": "./assets/js/vendor/underscore.js",
     "backbone": "./assets/js/vendor/backbone.js"
-  },  
+  },
   "browserify-shim": {
     "jquery": "$",
     "underscore": "_",
@@ -54,7 +54,7 @@
     "passport-github": "^0.1.5",
     "rc": "~0.5.0",
     "react": "^0.12.1",
-    "sails": "~0.10.5",
+    "sails": "^0.11.0",
     "sails-disk": "~0.10.0",
     "sails-mongo": "^0.10.4",
     "static-favicon": "~1.0.0",

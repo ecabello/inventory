@@ -60,9 +60,9 @@
         <h2>
           Something isn't right here.
         </h2>
-        {{#if error}}
+        {{#if data.message}}
         <pre class="error"><code>
-        	{{error}}
+        	{{data.message}}
         </code></pre>
         {{else}}
        <p class="error">

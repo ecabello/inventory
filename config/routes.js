@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     controller : 'appController',
-    action : 'renderApp' 
+    action : 'renderApp'
   },
 
   /***************************************************************************
@@ -55,6 +55,11 @@ module.exports.routes = {
   'POST /login': {
     controller: 'UserController',
     action: 'processLogin'
+  },
+
+  'GET /user': {
+    controller: 'UserController',
+    action: 'logged'
   },
 
   '/google/login': {
@@ -95,5 +100,34 @@ module.exports.routes = {
   'PUT /inventorytransaction': {
     controller: 'InventoryTransactionController',
     action: 'affectInventory'
-  }
+  },
+
+  // Repoint /product to our custom action that lists
+  // the logged user's products
+  'GET /product': {
+    controller: 'ProductController',
+    action: 'myProducts'
+  },
+
+  // Repoint /category to list the logged user's categories
+  'GET /category': {
+    controller: 'CategoryController',
+    action: 'myCategories'
+  },
+
+  // Repoint /catalog to list the logged user's catalogs
+  'GET /catalog': {
+    controller: 'CatalogController',
+    action: 'myCatalogs'
+  },
+
+  // Repoint /warehouse to list the logged user's warehouses
+  'GET /warehouse': {
+    controller: 'WarehouseController',
+    action: 'myWarehouses'
+  },
+
+  '/upload':{
+    view: 'upload'  // view 'uploadfile' in views directory will loaded automatically
+  },
 };

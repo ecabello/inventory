@@ -15,24 +15,37 @@ var loginCallback = function(err, user, network, req, res) {
         });
     }
     req.logIn(user, function(err) {
-        if (err) return res.send(err);
+        if (err)
+          return res.send(err);
+
         return res.send({
             success : true,
-            messages: ['login successful']
+            messages: ['login successful'],
+            user: user
         });
     });
 };
+
 module.exports = {
     login: function(req, res) {
         res.render('user/login', {
             name: 'Rey'
         });
     },
+
     processLogin: function(req, res) {
         passport.authenticate('local', function(err, user, info) {
             return loginCallback(err, user, 'Local', req, res);
         })(req, res);
     },
+
+    logged: function(req, res) {
+      if (req.isAuthenticated()) {
+        return res.json(req.user);
+      }
+      return res.notFound('No user is logged in');
+    },
+
     googleLogin: function(req, res) {
         var success = req.param('success');
         var fail = req.param('fail');
@@ -44,6 +57,7 @@ module.exports = {
             return loginCallback(err, user, 'Google', req, res);
         })(req, res);
     },
+
     facebookLogin: function(req, res) {
         passport.authenticate('facebook', {
             scope: ['email']
@@ -51,16 +65,19 @@ module.exports = {
             return loginCallback(err, user, 'Facebook', req, res);
         })(req, res);
     },
+
     twitterLogin: function(req, res) {
         passport.authenticate('twitter', {}, function(err, user) {
             return loginCallback(err, user, 'twitter', req, res);
         })(req, res);
     },
+
     logout: function(req, res) {
         req.logout();
         res.send('logout successful');
     }
 };
+
 module.exports.blueprints = {
     // Expose a route for every method
     actions: true,

@@ -30,6 +30,13 @@ module.exports = {
     products: {
       collection: 'Product',
       via: 'categories'
+    },
+
+    toJSON: function() {
+      var obj = this.toObject();
+      if ('owner' in obj && typeof obj.owner === 'object')
+        obj.owner = obj.owner.id;
+      return obj;
     }
   }
 };
