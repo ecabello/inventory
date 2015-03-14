@@ -5,8 +5,8 @@ var Actions = React.createClass({
 	render : function () {
 		return (
 			<div className='row'>
-				<ButtonGroup>
-					<a className='btn-action remove' href='#'><i className="fa fa-times"></i> remove</a>
+			    <ButtonGroup>
+					<a className='btn-action remove' onClick={ () => this.props.removeCb(this.props.id) }><i className="fa fa-times"></i> remove</a>
 					<a className='btn-action edit' href='#'><i className="fa fa-pencil-square-o"></i> edit</a>		
 				</ButtonGroup>
 			</div>

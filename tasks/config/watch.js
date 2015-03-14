@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
 		css: {
 			files: 'assets/css/src/**/*.scss',
-			tasks: ['compass'],
+			tasks: ['compass','copy:dev'],
 			options: {
 				livereload: true,
 			}

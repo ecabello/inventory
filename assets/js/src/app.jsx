@@ -14,8 +14,8 @@ var Home = require('./homePage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
 
-var CategoryList = require('./components/CategoryBox');  
-var AddCategory = require('./components/AddCategory');
+var CategoryList = require('./components/Category/CategoryCollection');  
+var AddCategory = require('./components/Category/AddCategory');
 
 var Products = require('./components/Products');
 var AddProduct = require('./components/AddProduct');            
@@ -42,7 +42,7 @@ var routes = (
     <Route handler={CpanelPage} path="cpanel" name="cpanel">
     	<Route name='category' path='category' handler={CategoryList} />
     		<Route name='add-category' path='category/add' handler={AddCategory} />
-    	<Route name='product' path='product' handler={Products} />
+        <Route name='product' path='product' handler={Products} />
     		<Route name='add-product' path='product/add' handler={AddProduct} />
     	<Route name='social' path='social' handler={UnderConst} />
     	<Route name='locations' path='locations' handler={UnderConst} />

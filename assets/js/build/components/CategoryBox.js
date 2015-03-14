@@ -1,5 +1,6 @@
 var React = require('react');
 var Actions = require('./actions.js');
+var TopHeader = require('./Texts/TopHeader');
 var Router = require('react-router');
 var Link = Router.Link;
 
@@ -7,7 +8,7 @@ var CategoryBox = React.createClass({displayName: "CategoryBox",
 	render : function () {
 		return (
 			React.createElement("div", {className: "small-12 columns"}, 
-				React.createElement("h1", null, "Categories"), 
+				React.createElement(TopHeader, {text: "Category List"}), 
 				React.createElement(Link, {className: "btn-action edit", to: "add-category"}, React.createElement("i", {className: "fa fa-plus"}), " New Category"), 
 				React.createElement("br", null), React.createElement("br", null), 
 				React.createElement("table", {className: "table table-condensed"}, 

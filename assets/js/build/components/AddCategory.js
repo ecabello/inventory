@@ -1,11 +1,12 @@
 var React = require('react');
 var Actions = require('./actions.js');
+var TopHeader = require('./Texts/TopHeader');
 
 var AddCategory = React.createClass({displayName: "AddCategory",
 	render : function () {
 		return (
 			React.createElement("div", {className: "small-12 columns"}, 
-				React.createElement("h1", null, "New category"), 
+				React.createElement(TopHeader, {text: "New Category"}), 
 				React.createElement("div", {className: "row"}, 
 			    	React.createElement("div", {className: "large-4 columns"}, 
 			      		React.createElement("label", null, "Name:", 

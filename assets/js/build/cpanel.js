@@ -7,14 +7,16 @@ var RouteHandler = Router.RouteHandler;
 var cpanel = React.createClass({displayName: "cpanel",
 	render : function () {
 		return (
-			React.createElement("div", {className: "row content-container"}, 
-				React.createElement("div", {className: "small-3 columns menu-container"}, 
-					React.createElement(LeftMenu, null)
-				), 
-				React.createElement("div", {className: "small-9 columns sub-content-container"}, 
-					React.createElement(RouteHandler, null)
-				)	
-			)
+			React.createElement("div", {className: "small-10 columns small-centered"}, 
+				React.createElement("div", {className: "row content-container"}, 
+					React.createElement("div", {className: "small-3  columns menu-container"}, 
+						React.createElement(LeftMenu, null)
+					), 
+					React.createElement("div", {className: "small-9 columns sub-content-container"}, 
+						React.createElement(RouteHandler, null)
+					)	
+				)
+			)	
 			);
 	}
 });

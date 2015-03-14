@@ -1,9 +1,11 @@
 .leftMenu {
 	color : #008CBA;
 	width : 300px;
-	background-color : #FAFAFA;
+	background-color : white;
 	padding: 20px;
 	float : right;
+	margin-top : 25px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	h3 {
 		margin-top: 0px;
 		text-transform: uppercase;

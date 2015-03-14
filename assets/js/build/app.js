@@ -14,8 +14,8 @@ var Home = require('./homePage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
 
-var CategoryList = require('./components/CategoryBox');  
-var AddCategory = require('./components/AddCategory');
+var CategoryList = require('./components/Category/CategoryCollection');  
+var AddCategory = require('./components/Category/AddCategory');
 
 var Products = require('./components/Products');
 var AddProduct = require('./components/AddProduct');            
@@ -42,7 +42,7 @@ var routes = (
     React.createElement(Route, {handler: CpanelPage, path: "cpanel", name: "cpanel"}, 
     	React.createElement(Route, {name: "category", path: "category", handler: CategoryList}), 
     		React.createElement(Route, {name: "add-category", path: "category/add", handler: AddCategory}), 
-    	React.createElement(Route, {name: "product", path: "product", handler: Products}), 
+        React.createElement(Route, {name: "product", path: "product", handler: Products}), 
     		React.createElement(Route, {name: "add-product", path: "product/add", handler: AddProduct}), 
     	React.createElement(Route, {name: "social", path: "social", handler: UnderConst}), 
     	React.createElement(Route, {name: "locations", path: "locations", handler: UnderConst}), 

@@ -1,8 +1,13 @@
-h5 {
-	&.alert-text {
+.alert-text {
 		color : rgb(144, 20, 20) !important;  
-	}
-	&.success-text {
+}
+.success-text {
 		color : green;
-	}
+}
+.top-header-text {
+	color : #0077c7;
+	font-family: Avenir,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+	font-weight : 200;
+	font-size : 3rem;
+	margin-top : 0px !important;
 }

@@ -1,10 +1,11 @@
 var React = require('react');
+var TopHeader = require('./Texts/TopHeader');
 
 var AddProduct = React.createClass({
 	render : function () {
 		return (
 			<div className='small-12 columns'>
-				<h1>New Product</h1>
+				<TopHeader text="New Product" />
 				<div className="row">
 			    	<div className="large-6 columns">
 			    		<div className="row">
