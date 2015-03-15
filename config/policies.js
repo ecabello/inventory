@@ -69,5 +69,16 @@ module.exports.policies = {
     // -have access to the warehouse
     // -Have permission to affect inventory for the product
     affectInventory: ['isLoggedIn', 'canAccessWarehouse', 'canAffectInventory']
-	}
+	},
+
+  //
+  FileController: {
+    '*': true,
+
+    upload: ['isLoggedIn'],
+    create: ['setLoggedUserAsOwner'],
+    update:  ['isLoggedIn', 'preventOwnerChange', 'preventUrlChange'],
+    destroy: ['isLoggedIn'],
+    myFiles: ['isLoggedIn']
+  }
 };

@@ -127,7 +127,13 @@ module.exports.routes = {
     action: 'myWarehouses'
   },
 
+  // Repoint /file to list the logged user's files
+  'GET /warehouse': {
+    controller: 'FileController',
+    action: 'myFiles'
+  },
+
   '/upload':{
-    view: 'upload'  // view 'uploadfile' in views directory will loaded automatically
+    view: 'upload'  // 'uploadfile' view
   },
 };
