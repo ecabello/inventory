@@ -20,6 +20,7 @@ var UpdateCategory = require('./components/Category/UpdateCategory');
 
 var Products = require('./components/Product/ProductCollection');
 var AddProduct = require('./components/Product/AddProduct');  
+var UpdateProduct = require('./components/Product/UpdateProduct');
 
 
 
@@ -47,8 +48,11 @@ var routes = (
     		<Route name='add-category' path='add' handler={AddCategory} />
             <Route name='update-category' path=':id' handler={UpdateCategory} />
         </Route>    
-        <Route name='product' path='product' handler={Products} />
-    		<Route name='add-product' path='product/add' handler={AddProduct} />
+        <Route name='product' path='product'>
+            <DefaultRoute handler={Products} />
+    		<Route name='add-product' path='add' handler={AddProduct} />
+            <Route name='update-product' path=':id' handler={UpdateProduct} />
+        </Route>    
     	<Route name='social' path='social' handler={UnderConst} />
     	<Route name='locations' path='locations' handler={UnderConst} />
     	<Route name='contact-info' path='contact-info' handler={UnderConst} />

@@ -81,7 +81,7 @@ var Products = React.createClass({displayName: "Products",
 					), 
 					React.createElement("div", {className: "small-4 columns"}, 
 						React.createElement("div", {className: "small-10 columns right"}, 
-							React.createElement("button", {className: "btn-blue"}, React.createElement("i", {className: "fa fa-pencil-square-o"}), " Update"), 
+							React.createElement("button", {className: "btn-blue", onClick: function()   {return this.transitionTo('update-product',{ id : product.get('id') });}.bind(this)}, React.createElement("i", {className: "fa fa-pencil-square-o"}), " Update"), 
 							React.createElement("button", {className: "btn-red", onClick: function()   {return this.removeOne(product.get('id'));}.bind(this)}, React.createElement("i", {className: "fa fa-times"}), " Delete"), 
 							React.createElement("a", {className: "btn-cancel", onClick: function()   {return this.setState({ detail : false });}.bind(this)}, "Cancel")
 						)

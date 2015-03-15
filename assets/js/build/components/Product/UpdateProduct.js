@@ -27,19 +27,19 @@ var updateProduct = React.createClass({displayName: "updateProduct",
 			    		React.createElement("div", {className: "row"}, 
 				      		React.createElement("div", {className: "large-12 columns"}, 
 					      		React.createElement("label", null, "Product name:", 
-					       			React.createElement("input", {type: "text", placeholder: "Product name", ref: "name"})
+					       			React.createElement("input", {type: "text", value: this.state.model.get('name'), onChange: function()   {return this.onChangeHandle('name');}.bind(this), ref: "name"})
 					      		)
 				    		), 
 				    		React.createElement("div", {className: "large-12 columns"}, 
 					      		React.createElement("div", {className: "row"}, 
 							      	React.createElement("div", {className: "large-6 columns"}, 
 							      		React.createElement("label", null, "Price:", 
-							       			React.createElement("input", {type: "text", placeholder: "Price", ref: "price"})
+							       			React.createElement("input", {type: "text", ref: "price", value: this.state.model.get('price'), onChange: function()   {return this.onChangeHandle('price');}.bind(this)})
 							      		)
 						    		), 
 						    		React.createElement("div", {className: "large-6 columns"}, 
 							      		React.createElement("label", null, "Unit:", 
-							       			React.createElement("select", {ref: "unit"}, 
+							       			React.createElement("select", {ref: "unit", value: this.state.model.get('unit'), onChange: function()   {return this.onChangeHandle('unit');}.bind(this)}, 
 							       				React.createElement("option", null, "Kgs"), 
 							       				React.createElement("option", null, "Lbs"), 
 							       				React.createElement("option", null, "Boxes")
@@ -50,11 +50,11 @@ var updateProduct = React.createClass({displayName: "updateProduct",
 				    		), 
 				    		React.createElement("div", {className: "large-12 columns"}, 
 				      			React.createElement("label", null, "Product description:", 
-				        			React.createElement("textarea", {rows: "10", placeholder: "Optional:", ref: "description"})
+				        			React.createElement("textarea", {rows: "10", ref: "description", value: this.state.model.get('description'), onChange: function()   {return this.onChangeHandle('description');}.bind(this)})
 				      			)
 				    		), 
 				    		React.createElement("div", {className: "large-12 columns"}, 
-				      			React.createElement("input", {type: "checkbox", ref: "promo"}), 
+				      			React.createElement("input", {type: "checkbox", ref: "promo", checked: this.state.model.get('promo'), onChange: function()   {return this.onChangeHandle('promo');}.bind(this)}), 
 				      			React.createElement("label", null, "Promotional this product?")
 				    		)
 				    	)	
@@ -78,16 +78,12 @@ var updateProduct = React.createClass({displayName: "updateProduct",
 			)	
 			);
 	},
-	updateName : function () {
-		this.state.model.set({ name : this.refs.name.getDOMNode().value });
-		this.forceUpdate();
-	},
-	updateDesc : function () {
-		this.state.model.set({ description : this.refs.description.getDOMNode().value });
+	onChangeHandle : function (field) {
+		this.state.model.attributes[field] =  field != 'promo' ? this.refs[field].getDOMNode().value :this.refs[field].getDOMNode().checked;
 		this.forceUpdate();
 	},
 	save : function () {
-		this.state.model.save().done(function()  {return this.transitionTo('category');}.bind(this));
+		this.state.model.save().done(function()  {return this.transitionTo('product');}.bind(this));
 	}
 });
 module.exports = updateProduct;

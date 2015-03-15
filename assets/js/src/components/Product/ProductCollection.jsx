@@ -81,7 +81,7 @@ var Products = React.createClass({
 					</div>
 					<div className="small-4 columns">
 						<div className="small-10 columns right">
-							<button className="btn-blue"><i className="fa fa-pencil-square-o"></i> Update</button>
+							<button className="btn-blue" onClick={ () => this.transitionTo('update-product',{ id : product.get('id') }) }><i className="fa fa-pencil-square-o"></i> Update</button>
 							<button className="btn-red" onClick={ () => this.removeOne(product.get('id')) }><i className="fa fa-times"></i> Delete</button>
 							<a className="btn-cancel" onClick={ () => this.setState({ detail : false })}>Cancel</a>
 						</div>

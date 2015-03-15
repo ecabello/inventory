@@ -27,19 +27,19 @@ var updateProduct = React.createClass({
 			    		<div className="row">
 				      		<div className="large-12 columns">
 					      		<label>Product name:
-					       			<input type="text" placeholder="Product name" ref="name"/>
+					       			<input type="text" value={this.state.model.get('name')} onChange={ () => this.onChangeHandle('name') } ref="name"/>
 					      		</label>
 				    		</div>
 				    		<div className="large-12 columns">
 					      		<div className="row">
 							      	<div className="large-6 columns">
 							      		<label>Price:
-							       			<input type="text" placeholder="Price" ref="price"/>
+							       			<input type="text" ref="price" value={this.state.model.get('price')} onChange={ () => this.onChangeHandle('price') } />
 							      		</label>
 						    		</div>
 						    		<div className="large-6 columns">
 							      		<label>Unit:
-							       			<select ref="unit">
+							       			<select ref="unit" value={this.state.model.get('unit')} onChange={ () => this.onChangeHandle('unit') }>
 							       				<option>Kgs</option>
 							       				<option>Lbs</option>
 							       				<option>Boxes</option>
@@ -50,11 +50,11 @@ var updateProduct = React.createClass({
 				    		</div>
 				    		<div className="large-12 columns">
 				      			<label>Product description:
-				        			<textarea rows="10" placeholder="Optional:" ref="description"></textarea>
+				        			<textarea rows="10"  ref="description" value={this.state.model.get('description')} onChange={ () => this.onChangeHandle('description') }></textarea>
 				      			</label>
 				    		</div>
 				    		<div className="large-12 columns">
-				      			<input type="checkbox" ref="promo" />
+				      			<input type="checkbox" ref="promo" checked={this.state.model.get('promo')} onChange={ () => this.onChangeHandle('promo') }/>
 				      			<label>Promotional this product?</label>
 				    		</div>
 				    	</div>	
@@ -78,16 +78,12 @@ var updateProduct = React.createClass({
 			</div>	
 			);
 	},
-	updateName : function () {
-		this.state.model.set({ name : this.refs.name.getDOMNode().value });
-		this.forceUpdate();
-	},
-	updateDesc : function () {
-		this.state.model.set({ description : this.refs.description.getDOMNode().value });
+	onChangeHandle : function (field) {
+		this.state.model.attributes[field] =  field != 'promo' ? this.refs[field].getDOMNode().value :this.refs[field].getDOMNode().checked;
 		this.forceUpdate();
 	},
 	save : function () {
-		this.state.model.save().done(() => this.transitionTo('category'));
+		this.state.model.save().done(() => this.transitionTo('product'));
 	}
 });
 module.exports = updateProduct;

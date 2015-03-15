@@ -20,6 +20,7 @@ var UpdateCategory = require('./components/Category/UpdateCategory');
 
 var Products = require('./components/Product/ProductCollection');
 var AddProduct = require('./components/Product/AddProduct');  
+var UpdateProduct = require('./components/Product/UpdateProduct');
 
 
 
@@ -47,8 +48,11 @@ var routes = (
     		React.createElement(Route, {name: "add-category", path: "add", handler: AddCategory}), 
             React.createElement(Route, {name: "update-category", path: ":id", handler: UpdateCategory})
         ), 
-        React.createElement(Route, {name: "product", path: "product", handler: Products}), 
-    		React.createElement(Route, {name: "add-product", path: "product/add", handler: AddProduct}), 
+        React.createElement(Route, {name: "product", path: "product"}, 
+            React.createElement(DefaultRoute, {handler: Products}), 
+    		React.createElement(Route, {name: "add-product", path: "add", handler: AddProduct}), 
+            React.createElement(Route, {name: "update-product", path: ":id", handler: UpdateProduct})
+        ), 
     	React.createElement(Route, {name: "social", path: "social", handler: UnderConst}), 
     	React.createElement(Route, {name: "locations", path: "locations", handler: UnderConst}), 
     	React.createElement(Route, {name: "contact-info", path: "contact-info", handler: UnderConst}), 
