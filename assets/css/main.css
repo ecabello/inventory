@@ -9023,6 +9023,48 @@ input.w-mid, select.w-mid {
 }
 
 /* line 1, src/components/_buttons.scss */
+button {
+  box-shadow: none !important;
+}
+
+/* line 6, src/components/_buttons.scss */
+.btn-blue {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #0077c7;
+  background-color: white;
+  color: #0077c7;
+}
+/* line 12, src/components/_buttons.scss */
+.btn-blue:hover {
+  color: white;
+  background-color: #0077c7;
+}
+
+/* line 17, src/components/_buttons.scss */
+.btn-red {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #d9534f;
+  background-color: white;
+  color: #d9534f;
+}
+/* line 23, src/components/_buttons.scss */
+.btn-red:hover {
+  color: white;
+  background-color: #d9534f;
+}
+
+/* line 28, src/components/_buttons.scss */
+.btn-cancel {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0px;
+  font-style: italic;
+}
+
+/* line 36, src/components/_buttons.scss */
 .btn-topbar {
   margin-top: 8px;
   height: 35px !important;
@@ -9031,12 +9073,12 @@ input.w-mid, select.w-mid {
   background-color: #43bfbf !important;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
-/* line 8, src/components/_buttons.scss */
+/* line 43, src/components/_buttons.scss */
 .btn-topbar:hover {
   opacity: 0.8;
 }
 
-/* line 13, src/components/_buttons.scss */
+/* line 48, src/components/_buttons.scss */
 .btn-action {
   display: inline-block;
   border: 1px solid;
@@ -9044,51 +9086,71 @@ input.w-mid, select.w-mid {
   padding: 7px 10px;
   border-radius: 5px;
 }
-/* line 19, src/components/_buttons.scss */
+/* line 54, src/components/_buttons.scss */
 .btn-action.remove {
   border-color: red;
   color: red;
 }
-/* line 22, src/components/_buttons.scss */
+/* line 57, src/components/_buttons.scss */
 .btn-action.remove:hover {
   color: white;
   background-color: red;
 }
-/* line 27, src/components/_buttons.scss */
+/* line 62, src/components/_buttons.scss */
 .btn-action.edit {
   border-color: #2ba6cb;
   color: #2ba6cb;
 }
-/* line 30, src/components/_buttons.scss */
+/* line 65, src/components/_buttons.scss */
 .btn-action.edit:hover {
   color: white;
   background-color: #2ba6cb;
 }
 
-/* line 37, src/components/_buttons.scss */
+/* line 72, src/components/_buttons.scss */
 .custom-button-group {
   margin-left: 5px;
 }
-/* line 39, src/components/_buttons.scss */
+/* line 74, src/components/_buttons.scss */
 .custom-button-group li:not(:last-child) {
   margin-right: 10px;
 }
-/* line 43, src/components/_buttons.scss */
+/* line 78, src/components/_buttons.scss */
 .custom-button-group li a.btn-action {
   padding-top: 4px;
 }
 
 /* line 1, src/components/_tables.scss */
-table {
-  width: 100%;
+.table-header {
+  background-color: #0e74af;
+  padding: 5px 0px;
+  color: white;
+  padding-right: 10px;
+  border-radius: 5px;
+  margin-top: 10px !important;
+}
+
+/* line 10, src/components/_tables.scss */
+.table-row {
+  border-bottom: 1px solid #008CBA;
+  padding: 15px 15px;
+  font-size: 14px;
 }
 
 /* line 1, src/components/_forms.scss */
-input {
+input + label {
+  display: inline !important;
+  margin-left: 10px;
+  position: relative;
+  top: 2px;
+}
+
+/* line 7, src/components/_forms.scss */
+input[type='text'] {
   height: 40px !important;
 }
 
-/* line 5, src/components/_forms.scss */
+/* line 11, src/components/_forms.scss */
 select {
   height: 40px !important;
   border-radius: 0px;
@@ -9096,18 +9158,18 @@ select {
   background-color: white;
 }
 
-/* line 12, src/components/_forms.scss */
+/* line 18, src/components/_forms.scss */
 textarea {
   height: 120px;
 }
 
-/* line 16, src/components/_forms.scss */
+/* line 22, src/components/_forms.scss */
 img.galery {
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 5px;
 }
-/* line 20, src/components/_forms.scss */
+/* line 26, src/components/_forms.scss */
 img.galery:hover {
   opacity: 0;
 }
@@ -9129,6 +9191,15 @@ img.galery:hover {
   font-weight: 200;
   font-size: 3rem;
   margin-top: 0px !important;
+}
+
+/* line 14, src/components/_texts.scss */
+h6 {
+  font-weight: bold;
+}
+/* line 16, src/components/_texts.scss */
+h6 span.text-p {
+  font-weight: normal;
 }
 
 /* line 7, src/main.scss */

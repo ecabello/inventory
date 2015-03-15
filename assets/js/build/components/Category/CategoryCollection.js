@@ -2,9 +2,10 @@ var React = require('react');
 var Actions = require('./../actions.js');
 var TopHeader = require('./../Texts/TopHeader');
 var Router = require('react-router');
+var Link = Router.Link;
 var _ = require('underscore');
 var Backbone = require('backbone');
-var Link = Router.Link;
+
 
 
 var CategoryList = React.createClass({displayName: "CategoryList",

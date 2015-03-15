@@ -16,9 +16,11 @@ var CpanelPage = require('./cpanel');
 
 var CategoryList = require('./components/Category/CategoryCollection');  
 var AddCategory = require('./components/Category/AddCategory');
+var UpdateCategory = require('./components/Category/UpdateCategory');
 
-var Products = require('./components/Products');
-var AddProduct = require('./components/AddProduct');            
+var Products = require('./components/Product/ProductCollection');
+var AddProduct = require('./components/Product/AddProduct');  
+
 
 
  
@@ -37,11 +39,14 @@ var App = React.createClass({displayName: "App",
 }); 
 
 var routes = (
-  React.createElement(Route, {handler: App, path: "/"}, 
+  React.createElement(Route, {handler: App, path: "/", name: "home"}, 
     React.createElement(DefaultRoute, {handler: Home}), 
-    React.createElement(Route, {handler: CpanelPage, path: "cpanel", name: "cpanel"}, 
-    	React.createElement(Route, {name: "category", path: "category", handler: CategoryList}), 
-    		React.createElement(Route, {name: "add-category", path: "category/add", handler: AddCategory}), 
+    React.createElement(Route, {name: "cpanel", handler: CpanelPage, path: "cpanel"}, 
+    	React.createElement(Route, {name: "category", path: "category"}, 
+            React.createElement(DefaultRoute, {handler: CategoryList}), 
+    		React.createElement(Route, {name: "add-category", path: "add", handler: AddCategory}), 
+            React.createElement(Route, {name: "update-category", path: ":id", handler: UpdateCategory})
+        ), 
         React.createElement(Route, {name: "product", path: "product", handler: Products}), 
     		React.createElement(Route, {name: "add-product", path: "product/add", handler: AddProduct}), 
     	React.createElement(Route, {name: "social", path: "social", handler: UnderConst}), 
@@ -53,7 +58,7 @@ var routes = (
 );
 
 $(document).ready(function () {
-	Router.run(routes, function (Handler) {
+	Router.run(routes,function (Handler) {
 	  React.render(React.createElement(Handler, null), document.getElementById('app'));
 	});
 });
