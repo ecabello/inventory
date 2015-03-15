@@ -1,13 +1,22 @@
 var React = require('react');
-var Navigation = require('react-router').Navigation;
+var ReactRouter = require('react-router');
+var Navigation = ReactRouter.Navigation;
+var State = ReactRouter.State;
 var Actions = require('./../actions.js');
 var TopHeader = require('./../Texts/TopHeader');
 
 var _ = require('underscore');
 var Backbone = require('backbone');
 
+var categoryModel = Backbone.Model.extend({ urlRoot : '/category' });
 var updateCategory = React.createClass({displayName: "updateCategory",
-	mixins: [Navigation],
+	mixins: [Navigation,State],
+	getInitialState :  function () {
+		return { model :  new categoryModel({ id  : this.getParams().id }) };
+	},
+	componentDidMount : function () {
+		this.state.model.fetch().done( function()  {return this.forceUpdate();}.bind(this));
+	},
 	render : function () {
 		return (
 			React.createElement("div", {className: "small-12 columns"}, 
@@ -15,14 +24,14 @@ var updateCategory = React.createClass({displayName: "updateCategory",
 				React.createElement("div", {className: "row"}, 
 			    	React.createElement("div", {className: "large-12 columns"}, 
 			      		React.createElement("label", null, "Name:", 
-			       			React.createElement("input", {type: "text", placeholder: "Category Name", ref: "name", value: this.props.model.get('name')})
+			       			React.createElement("input", {type: "text", onChange: this.updateName, ref: "name", value: this.state.model.get('name')})
 			      		)
 			    	)
 			  	), 
 				React.createElement("div", {className: "row"}, 
 			    	React.createElement("div", {className: "large-12 columns"}, 
 			      		React.createElement("label", null, "Description:", 
-			        		React.createElement("textarea", {rows: "10", placeholder: "Optional:", ref: "description", value: this.props.model.get('description')})
+			        		React.createElement("textarea", {rows: "10", onChange: this.updateDesc, ref: "description", value: this.state.model.get('description')})
 			      		)
 			    	)
 			  	), 
@@ -34,14 +43,16 @@ var updateCategory = React.createClass({displayName: "updateCategory",
 			)	
 			);
 	},
+	updateName : function () {
+		this.state.model.set({ name : this.refs.name.getDOMNode().value });
+		this.forceUpdate();
+	},
+	updateDesc : function () {
+		this.state.model.set({ description : this.refs.description.getDOMNode().value });
+		this.forceUpdate();
+	},
 	save : function () {
-		var categoryModel = Backbone.Model.extend({ urlRoot : '/category' });
-		var category = new categoryModel({
-			name : this.refs.name.getDOMNode().value,
-			description : this.refs.description.getDOMNode().value,
-
-		});
-		category.save().done(function()  {return this.transitionTo('category');}.bind(this));
+		this.state.model.save().done(function()  {return this.transitionTo('category');}.bind(this));
 	}
 });
 module.exports = updateCategory;

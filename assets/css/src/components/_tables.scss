@@ -1,3 +1,14 @@
-table {
-	width : 100%;
+.table-header {
+	background-color: #0e74af;
+	padding: 5px 0px;
+	color: white;
+	padding-right: 10px;
+	border-radius: 5px;
+	margin-top: 10px !important;
+}
+
+.table-row {
+	border-bottom : 1px solid #008CBA;
+	padding : 15px 15px;
+	font-size : 14px;
 }

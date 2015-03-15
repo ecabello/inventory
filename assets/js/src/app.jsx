@@ -16,9 +16,12 @@ var CpanelPage = require('./cpanel');
 
 var CategoryList = require('./components/Category/CategoryCollection');  
 var AddCategory = require('./components/Category/AddCategory');
+var UpdateCategory = require('./components/Category/UpdateCategory');
 
-var Products = require('./components/Products');
-var AddProduct = require('./components/AddProduct');            
+var Products = require('./components/Product/ProductCollection');
+var AddProduct = require('./components/Product/AddProduct');  
+var UpdateProduct = require('./components/Product/UpdateProduct');
+
 
 
  
@@ -37,13 +40,19 @@ var App = React.createClass({
 }); 
 
 var routes = (
-  <Route handler={App} path="/">  
+  <Route handler={App} path="/" name="home">  
     <DefaultRoute handler={Home} />
-    <Route handler={CpanelPage} path="cpanel" name="cpanel">
-    	<Route name='category' path='category' handler={CategoryList} />
-    		<Route name='add-category' path='category/add' handler={AddCategory} />
-        <Route name='product' path='product' handler={Products} />
-    		<Route name='add-product' path='product/add' handler={AddProduct} />
+    <Route name="cpanel" handler={CpanelPage} path="cpanel">
+    	<Route name='category' path='category'>
+            <DefaultRoute handler={CategoryList} /> 
+    		<Route name='add-category' path='add' handler={AddCategory} />
+            <Route name='update-category' path=':id' handler={UpdateCategory} />
+        </Route>    
+        <Route name='product' path='product'>
+            <DefaultRoute handler={Products} />
+    		<Route name='add-product' path='add' handler={AddProduct} />
+            <Route name='update-product' path=':id' handler={UpdateProduct} />
+        </Route>    
     	<Route name='social' path='social' handler={UnderConst} />
     	<Route name='locations' path='locations' handler={UnderConst} />
     	<Route name='contact-info' path='contact-info' handler={UnderConst} />
@@ -53,7 +62,7 @@ var routes = (
 );
 
 $(document).ready(function () {
-	Router.run(routes, function (Handler) {
+	Router.run(routes,function (Handler) {
 	  React.render(<Handler/>, document.getElementById('app'));
 	});
 });

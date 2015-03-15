@@ -1,4 +1,10 @@
-input {
+input + label {
+	display : inline !important;
+	margin-left : 10px;
+	position :  relative;
+	top : 2px;
+}
+input[type='text'] {
 	height : 40px !important;
 }
 

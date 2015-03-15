@@ -1,3 +1,38 @@
+button {
+	box-shadow : none !important;
+}
+$blue : #0077c7;
+$red : #D9534F;
+.btn-blue {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid $blue;
+	background-color: white;
+	color: $blue;
+	&:hover {
+		color : white;
+		background-color: $blue;
+	}
+}
+.btn-red {
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid $red;
+	background-color: white;
+	color: $red;
+	&:hover {
+		color : white;
+		background-color: $red;
+	}
+}
+.btn-cancel {
+	display : block;
+	width: 100%;
+	text-align : center;
+	margin : 10px 0px;
+	font-style: italic;
+}
+
 .btn-topbar {
 	margin-top: 8px;
 	height: 35px !important;

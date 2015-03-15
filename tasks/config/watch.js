@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 		// Front end React processing
 		jsx : {
 			files: ['assets/js/src/**/*.jsx'],
-			tasks: ['react','browserify']
+			tasks: ['react','browserify','copy:dev']
 		},
 
 		css: {
