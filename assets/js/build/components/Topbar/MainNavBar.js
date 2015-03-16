@@ -8,7 +8,7 @@ var MainNavBar = React.createClass({displayName: "MainNavBar",
 			React.createElement("nav", {className: "top-bar", "data-topbar": true, role: "navigation"}, 
 			    React.createElement("ul", {className: "title-area"}, 
 			    	React.createElement("li", {className: "name"}, 
-			        	React.createElement("h1", null, React.createElement("a", {href: "#"}, "Products Cloud"))
+			        	React.createElement("h1", null, React.createElement("a", {href: "#"}, "Products Cloud ", React.createElement("i", {className: "fa fa-cloud"})))
 			    	), 
 				    React.createElement("li", {className: "toggle-topbar menu-icon"}, React.createElement("a", {href: "#"}, React.createElement("span", null, "Menu")))
 	    		), 

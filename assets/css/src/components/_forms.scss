@@ -16,14 +16,11 @@ select {
 }
 
 textarea {
-	height : 120px;
+	height : 150px;
 }
 
 img.galery {
 	border :  1px solid #ccc;
 	padding : 5px;
 	border-radius : 5px;
-	&:hover {
-		opacity: 0;
-	}
 }

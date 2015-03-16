@@ -10,7 +10,7 @@ var LineSeparator = React.createClass({
 			top: -20,
 			left: '48%',
 			fontSize: 20,
-			backgroundColor: 'white', 
+			backgroundColor: '#F1F1F1', 
 			padding: '5px 10px',
 			color: '#dddddd'
 		}

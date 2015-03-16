@@ -4,6 +4,8 @@ var Navigation = ReactRouter.Navigation;
 var State = ReactRouter.State;
 var Actions = require('./../actions.js');
 var TopHeader = require('./../Texts/TopHeader');
+var Uploader = require('./Uploader');
+var Loader = require('./../Loader');
 
 var _ = require('underscore');
 var Backbone = require('backbone');
@@ -19,6 +21,15 @@ var updateProduct = React.createClass({displayName: "updateProduct",
 		this.state.model.fetch().done( function()  {return this.forceUpdate();}.bind(this));
 	},
 	render : function () {
+		var image = this.state.imgUrl ? (
+						React.createElement("div", {className: "large-12 columns"}, 
+					      	React.createElement("img", {className: "galery", src: this.state.imgUrl})
+				    	)
+			) : this.state.showLoader ? (
+				React.createElement("div", {className: "large-12 columns"}, 
+					React.createElement(Loader, null)
+				)	
+				) : undefined;
 		return (
 			React.createElement("div", {className: "small-12 columns"}, 
 				React.createElement(TopHeader, {text: "Edit Product"}), 
@@ -52,27 +63,29 @@ var updateProduct = React.createClass({displayName: "updateProduct",
 				      			React.createElement("label", null, "Product description:", 
 				        			React.createElement("textarea", {rows: "10", ref: "description", value: this.state.model.get('description'), onChange: function()   {return this.onChangeHandle('description');}.bind(this)})
 				      			)
-				    		), 
-				    		React.createElement("div", {className: "large-12 columns"}, 
-				      			React.createElement("input", {type: "checkbox", ref: "promo", checked: this.state.model.get('promo'), onChange: function()   {return this.onChangeHandle('promo');}.bind(this)}), 
-				      			React.createElement("label", null, "Promotional this product?")
 				    		)
 				    	)	
 			    	), 
 			    	React.createElement("div", {className: "large-6 columns left"}, 
 			      		React.createElement("div", {className: "large-12 columns"}, 
 					      	React.createElement("label", null, "Select image:", 
-					       		React.createElement("input", {type: "file", placeholder: "Image"})
+					       		React.createElement(Uploader, {url: "file/upload", done:  this.uploadDone, beforeSend:  this.showLoader})
 					      	)
 				    	), 
 			      		React.createElement("div", {className: "large-12 columns"}, 
-					      	React.createElement("img", {className: "galery", src: "../images/limon-persa.jpg"})
+					      	image 
 				    	)
 			    	)
 			  	), 
+			  	React.createElement("div", {className: "row"}, 
+			    	React.createElement("div", {className: "large-12 columns"}, 
+			    		React.createElement("input", {type: "checkbox", ref: "promo", checked: this.state.model.get('promo'), onChange: function()   {return this.onChangeHandle('promo');}.bind(this)}), 
+		      			React.createElement("label", null, "Promotional this product?")
+			    	)
+			    ), 
 				React.createElement("div", {className: "row"}, 
 			    	React.createElement("div", {className: "large-4 columns"}, 
-			      		React.createElement("button", {className: "btn-blue", onClick: this.save}, React.createElement("i", {className: "fa fa-plus"}), " Add Product")
+			      		React.createElement("button", {className: "btn-blue", onClick: this.save}, React.createElement("i", {className: "fa fa-pencil-square-o"}), " Update")
 			      	)
 			  	)
 			)	

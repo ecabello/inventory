@@ -6,16 +6,14 @@ var LeftMenu = React.createClass({
 	render : function () {
 		return (
 			<div className='leftMenu'>
-			    <h3>Control panel</h3>
+			    <h3>Control Panel</h3>
 			    <ul>
-			    	<li onClick={() => this.transitionTo('category')}>Categorias</li>
-			    	<li onClick={() => this.transitionTo('product')}>Productos</li>
-			    	<li onClick={() => this.transitionTo('social')}>Social</li>
-			    	<li onClick={() => this.transitionTo('locations')}>Locations</li>
-			    	<li onClick={() => this.transitionTo('contact-info')}>Contact info</li>
+			    	<li onClick={() => this.transitionTo('cpanel')}><i className="fa fa-tachometer"></i> Dashboard</li>
+			    	<li onClick={() => this.transitionTo('product')}><i className="fa fa-list-alt"></i> Products</li>
+			    	<li onClick={() => this.transitionTo('contact-info')}><i className="fa fa-user"></i> Profile</li>
 			    </ul>
 			</div>
-			);
+			); 
 	}
 });
 

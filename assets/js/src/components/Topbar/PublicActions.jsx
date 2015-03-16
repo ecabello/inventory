@@ -6,7 +6,7 @@ var PublicActions = React.createClass({
 			<section className="top-bar-section">
 			    <ul className="right">
 			        <li className="has-form">
-			          	<a href="#login">Login</a> 
+			          	<a href="#login">Log In <i className="fa fa-sign-in"></i></a> 
 			        </li>
 			    </ul>
     		</section>

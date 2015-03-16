@@ -4,6 +4,8 @@ var Navigation = ReactRouter.Navigation;
 var State = ReactRouter.State;
 var Actions = require('./../actions.js');
 var TopHeader = require('./../Texts/TopHeader');
+var Uploader = require('./Uploader');
+var Loader = require('./../Loader');
 
 var _ = require('underscore');
 var Backbone = require('backbone');
@@ -19,6 +21,15 @@ var updateProduct = React.createClass({
 		this.state.model.fetch().done( () => this.forceUpdate());
 	},
 	render : function () {
+		var image = this.state.imgUrl ? (
+						<div className="large-12 columns">
+					      	<img  className="galery" src={this.state.imgUrl} />
+				    	</div>
+			) : this.state.showLoader ? (
+				<div className="large-12 columns">
+					<Loader />
+				</div>	
+				) : undefined;
 		return (
 			<div className='small-12 columns'>
 				<TopHeader text="Edit Product" />
@@ -53,26 +64,28 @@ var updateProduct = React.createClass({
 				        			<textarea rows="10"  ref="description" value={this.state.model.get('description')} onChange={ () => this.onChangeHandle('description') }></textarea>
 				      			</label>
 				    		</div>
-				    		<div className="large-12 columns">
-				      			<input type="checkbox" ref="promo" checked={this.state.model.get('promo')} onChange={ () => this.onChangeHandle('promo') }/>
-				      			<label>Promotional this product?</label>
-				    		</div>
 				    	</div>	
 			    	</div>
 			    	<div className="large-6 columns left">
 			      		<div className="large-12 columns">
 					      	<label>Select image:
-					       		<input type="file" placeholder="Image" />
+					       		<Uploader url="file/upload" done={ this.uploadDone } beforeSend={ this.showLoader } />
 					      	</label> 
 				    	</div>
 			      		<div className="large-12 columns">
-					      	<img  className="galery" src="../images/limon-persa.jpg" />
+					      	{ image }
 				    	</div>
 			    	</div>
 			  	</div>
+			  	<div className="row">
+			    	<div className="large-12 columns">
+			    		<input type="checkbox" ref="promo" checked={this.state.model.get('promo')} onChange={ () => this.onChangeHandle('promo') }/>
+		      			<label>Promotional this product?</label>
+			    	</div>
+			    </div>
 				<div className="row">
 			    	<div className="large-4 columns">
-			      		<button className='btn-blue' onClick={this.save}><i className="fa fa-plus"></i> Add Product</button>
+			      		<button className='btn-blue' onClick={this.save}><i className="fa fa-pencil-square-o"></i> Update</button>
 			      	</div>
 			  	</div>
 			</div>	

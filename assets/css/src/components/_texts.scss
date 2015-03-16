@@ -11,9 +11,42 @@
 	font-size : 3rem;
 	margin-top : 0px !important;
 }
-h6 {
-	font-weight: bold;
-	span.text-p {
-		font-weight: normal;
+.text-p {
+	font-size: 16px;
+  	font-weight: 100;
+}
+.btn-close {
+	color : $orange;
+	font-size : 30px;
+	float : right;
+	&:hover {
+		color : $orange;
+		opacity: 0.8;
 	}
+}
+.btn-open {
+	color : $green;
+	font-size : 30px;
+	float : right;
+	&:hover {
+		color : $green;
+		opacity: 0.8;
+	}
+}
+
+.price {
+	&:before {
+		content: '$ ';
+	} 
+}
+.loader {
+	margin: 20px auto;
+	font-size : 80px;
+	color : #dedede;
+	text-align : center;
+}
+.fa-sign-in, .fa-sign-out {
+	font-size: 25px;
+  	position: relative;
+  	top: 4px;
 }

@@ -33,8 +33,9 @@ module.exports = function(grunt) {
 		images: {
 			// Assets to watch:
 			files: ['assets/images/**/*'],
+			tasks : ['copy:dev'],
 			// When assets are changed:
-			tasks: ['syncAssets' , 'linkAssets'],
+			//tasks: ['syncAssets' , 'linkAssets'],
 			options: { event: ['changed', 'added', 'deleted']}
 		}
 	});

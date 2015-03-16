@@ -1,10 +1,31 @@
 var React = require('react');
 var Navigation = require('react-router').Navigation;
 var TopHeader = require('./../Texts/TopHeader');
+var Uploader = require('./Uploader');
+var Loader = require('./../Loader');
 
 var AddProduct = React.createClass({displayName: "AddProduct",
 	mixins : [Navigation],
+	getInitialState : function () {
+		return {
+			imgUrl : undefined
+		};
+	},
+	getDefaultProps : function () {
+		return {
+			price : '0.00'
+		}
+	},
 	render : function () {
+		var image = this.state.imgUrl ? (
+						React.createElement("div", {className: "large-12 columns"}, 
+					      	React.createElement("img", {className: "galery", src: this.state.imgUrl})
+				    	)
+			) : this.state.showLoader ? (
+				React.createElement("div", {className: "large-12 columns"}, 
+					React.createElement(Loader, null)
+				)	
+				) : undefined;
 		return (
 			React.createElement("div", {className: "small-12 columns"}, 
 				React.createElement(TopHeader, {text: "New Product"}), 
@@ -20,7 +41,7 @@ var AddProduct = React.createClass({displayName: "AddProduct",
 					      		React.createElement("div", {className: "row"}, 
 							      	React.createElement("div", {className: "large-6 columns"}, 
 							      		React.createElement("label", null, "Price:", 
-							       			React.createElement("input", {type: "text", placeholder: "Price", ref: "price"})
+							       			React.createElement("input", {type: "text", placeholder: "Price", ref: "price", defaultValue: this.props.price, onChange:  this.validateNumber, onBlur:  this.fixed})
 							      		)
 						    		), 
 						    		React.createElement("div", {className: "large-6 columns"}, 
@@ -48,12 +69,10 @@ var AddProduct = React.createClass({displayName: "AddProduct",
 			    	React.createElement("div", {className: "large-6 columns left"}, 
 			      		React.createElement("div", {className: "large-12 columns"}, 
 					      	React.createElement("label", null, "Select image:", 
-					       		React.createElement("input", {type: "file", placeholder: "Image"})
+					       		React.createElement(Uploader, {url: "file/upload", done:  this.uploadDone, beforeSend:  this.showLoader})
 					      	)
 				    	), 
-			      		React.createElement("div", {className: "large-12 columns"}, 
-					      	React.createElement("img", {className: "galery", src: "../images/limon-persa.jpg"})
-				    	)
+			      		image 
 			    	)
 			  	), 
 				React.createElement("div", {className: "row"}, 
@@ -64,6 +83,24 @@ var AddProduct = React.createClass({displayName: "AddProduct",
 			)	
 			);
 	},
+	uploadDone : function (imgObj) {
+		this.setState({
+			imgUrl : imgObj.url,
+			imgId  : imgObj.id,
+			showLoader : undefined
+		});
+	},
+	showLoader : function () {
+		this.setState({ imgUrl : undefined, showLoader : true });
+	},
+	fixed : function () {
+		this.refs.price.getDOMNode().value = Number(this.refs.price.getDOMNode().value).toFixed(2);
+		this.props.price = this.refs.price.getDOMNode().value;
+	},
+	validateNumber : function (e) {
+        if (isNaN(this.refs.price.getDOMNode().value))  this.refs.price.getDOMNode().value = this.props.price; 
+		this.props.price = this.refs.price.getDOMNode().value;
+	},
 	save : function () {
 		var categoryModel = Backbone.Model.extend({ urlRoot : '/product' });
 		var category = new categoryModel({
@@ -71,8 +108,8 @@ var AddProduct = React.createClass({displayName: "AddProduct",
 			description : this.refs.description.getDOMNode().value,
 			price : this.refs.price.getDOMNode().value,
 			unit : this.refs.unit.getDOMNode().value,
-			promo : this.refs.promo.getDOMNode().checked
-
+			promo : this.refs.promo.getDOMNode().checked,
+			images : [this.state.imgId]
 		});
 		category.save().done(function()  {return this.transitionTo('product');}.bind(this));
 	}
