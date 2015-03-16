@@ -13,6 +13,7 @@ var AuthActions = require('./components/Topbar/AuthActions');
 var Home = require('./homePage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
+var DashBoard = require('./dashboard');
 
 var CategoryList = require('./components/Category/CategoryCollection');  
 var AddCategory = require('./components/Category/AddCategory');
@@ -43,7 +44,8 @@ var routes = (
   <Route handler={App} path="/" name="home">  
     <DefaultRoute handler={Home} />
     <Route name="cpanel" handler={CpanelPage} path="cpanel">
-    	<Route name='category' path='category'>
+    	<DefaultRoute name="dashboard" handler={DashBoard} />
+        <Route name='category' path='category'>
             <DefaultRoute handler={CategoryList} /> 
     		<Route name='add-category' path='add' handler={AddCategory} />
             <Route name='update-category' path=':id' handler={UpdateCategory} />

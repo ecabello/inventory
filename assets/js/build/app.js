@@ -13,6 +13,7 @@ var AuthActions = require('./components/Topbar/AuthActions');
 var Home = require('./homePage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
+var DashBoard = require('./dashboard');
 
 var CategoryList = require('./components/Category/CategoryCollection');  
 var AddCategory = require('./components/Category/AddCategory');
@@ -43,7 +44,8 @@ var routes = (
   React.createElement(Route, {handler: App, path: "/", name: "home"}, 
     React.createElement(DefaultRoute, {handler: Home}), 
     React.createElement(Route, {name: "cpanel", handler: CpanelPage, path: "cpanel"}, 
-    	React.createElement(Route, {name: "category", path: "category"}, 
+    	React.createElement(DefaultRoute, {name: "dashboard", handler: DashBoard}), 
+        React.createElement(Route, {name: "category", path: "category"}, 
             React.createElement(DefaultRoute, {handler: CategoryList}), 
     		React.createElement(Route, {name: "add-category", path: "add", handler: AddCategory}), 
             React.createElement(Route, {name: "update-category", path: ":id", handler: UpdateCategory})
