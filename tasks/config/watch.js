@@ -27,15 +27,6 @@ module.exports = function(grunt) {
 			options: {
 				livereload: true,
 			}
-		},
-
-		// Watch images so uploaded ones get published
-		images: {
-			// Assets to watch:
-			files: ['assets/images/**/*'],
-			// When assets are changed:
-			tasks: ['syncAssets' , 'linkAssets'],
-			options: { event: ['changed', 'added', 'deleted']}
 		}
 	});
 
