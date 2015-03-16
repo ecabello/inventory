@@ -136,4 +136,9 @@ module.exports.routes = {
   '/upload':{
     view: 'upload'  // 'uploadfile' view
   },
+  
+  'GET /product/user/:userid' : {
+    controller: 'ProductController',
+    action: 'userProducts'
+  }
 };
