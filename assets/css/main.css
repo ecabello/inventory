@@ -9173,16 +9173,39 @@ img.galery {
 }
 
 /* line 1, src/components/_texts.scss */
+.lightbox-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 600px;
+  margin: -300px 0px 0px -200px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  padding: 15px;
+}
+/* line 12, src/components/_texts.scss */
+.lightbox-container .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #dedede;
+}
+
+/* line 22, src/components/_texts.scss */
 .alert-text {
   color: #901414 !important;
 }
 
-/* line 4, src/components/_texts.scss */
+/* line 25, src/components/_texts.scss */
 .success-text {
   color: green;
 }
 
-/* line 7, src/components/_texts.scss */
+/* line 28, src/components/_texts.scss */
 .top-header-text {
   color: #0077c7;
   font-family: Avenir,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
@@ -9191,42 +9214,42 @@ img.galery {
   margin-top: 0px !important;
 }
 
-/* line 14, src/components/_texts.scss */
+/* line 35, src/components/_texts.scss */
 .text-p {
   font-size: 16px;
   font-weight: 100;
 }
 
-/* line 18, src/components/_texts.scss */
+/* line 39, src/components/_texts.scss */
 .btn-close {
   color: #c05b4d;
   font-size: 30px;
   float: right;
 }
-/* line 22, src/components/_texts.scss */
+/* line 43, src/components/_texts.scss */
 .btn-close:hover {
   color: #c05b4d;
   opacity: 0.8;
 }
 
-/* line 27, src/components/_texts.scss */
+/* line 48, src/components/_texts.scss */
 .btn-open {
   color: #40c012;
   font-size: 30px;
   float: right;
 }
-/* line 31, src/components/_texts.scss */
+/* line 52, src/components/_texts.scss */
 .btn-open:hover {
   color: #40c012;
   opacity: 0.8;
 }
 
-/* line 38, src/components/_texts.scss */
+/* line 59, src/components/_texts.scss */
 .price:before {
   content: '$ ';
 }
 
-/* line 42, src/components/_texts.scss */
+/* line 63, src/components/_texts.scss */
 .loader {
   margin: 20px auto;
   font-size: 80px;
@@ -9234,7 +9257,7 @@ img.galery {
   text-align: center;
 }
 
-/* line 48, src/components/_texts.scss */
+/* line 69, src/components/_texts.scss */
 .fa-sign-in, .fa-sign-out {
   font-size: 25px;
   position: relative;

@@ -13,6 +13,7 @@ var AuthActions = require('./components/Topbar/AuthActions');
 var Home = require('./homePage');
 var UnderConst = require('./components/underConst');
 var CpanelPage = require('./cpanel');
+var DashBoard = require('./dashboard');
 
 var CategoryList = require('./components/Category/CategoryCollection');  
 var AddCategory = require('./components/Category/AddCategory');
@@ -23,7 +24,7 @@ var AddProduct = require('./components/Product/AddProduct');
 var UpdateProduct = require('./components/Product/UpdateProduct');
 
 
-
+var TestingPage = require('./components/Testing/TestingPage');
  
  
 
@@ -43,7 +44,8 @@ var routes = (
   React.createElement(Route, {handler: App, path: "/", name: "home"}, 
     React.createElement(DefaultRoute, {handler: Home}), 
     React.createElement(Route, {name: "cpanel", handler: CpanelPage, path: "cpanel"}, 
-    	React.createElement(Route, {name: "category", path: "category"}, 
+    	React.createElement(DefaultRoute, {name: "dashboard", handler: DashBoard}), 
+        React.createElement(Route, {name: "category", path: "category"}, 
             React.createElement(DefaultRoute, {handler: CategoryList}), 
     		React.createElement(Route, {name: "add-category", path: "add", handler: AddCategory}), 
             React.createElement(Route, {name: "update-category", path: ":id", handler: UpdateCategory})
@@ -53,9 +55,7 @@ var routes = (
     		React.createElement(Route, {name: "add-product", path: "add", handler: AddProduct}), 
             React.createElement(Route, {name: "update-product", path: ":id", handler: UpdateProduct})
         ), 
-    	React.createElement(Route, {name: "social", path: "social", handler: UnderConst}), 
-    	React.createElement(Route, {name: "locations", path: "locations", handler: UnderConst}), 
-    	React.createElement(Route, {name: "contact-info", path: "contact-info", handler: UnderConst}), 
+    	React.createElement(Route, {name: "testing", handler: TestingPage, path: "testing"}), 
     	React.createElement(NotFoundRoute, {handler: UnderConst})
     )
   ) 
