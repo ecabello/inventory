@@ -24,7 +24,7 @@ var AddProduct = require('./components/Product/AddProduct');
 var UpdateProduct = require('./components/Product/UpdateProduct');
 
 
-
+var TestingPage = require('./components/Testing/TestingPage');
  
  
 
@@ -55,9 +55,7 @@ var routes = (
     		<Route name='add-product' path='add' handler={AddProduct} />
             <Route name='update-product' path=':id' handler={UpdateProduct} />
         </Route>    
-    	<Route name='social' path='social' handler={UnderConst} />
-    	<Route name='locations' path='locations' handler={UnderConst} />
-    	<Route name='contact-info' path='contact-info' handler={UnderConst} />
+    	<Route name='testing' handler={TestingPage} path="testing" />
     	<NotFoundRoute handler={UnderConst} />  
     </Route>
   </Route> 

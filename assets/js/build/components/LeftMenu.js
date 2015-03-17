@@ -10,7 +10,8 @@ var LeftMenu = React.createClass({displayName: "LeftMenu",
 			    React.createElement("ul", null, 
 			    	React.createElement("li", {onClick: function()  {return this.transitionTo('cpanel');}.bind(this)}, React.createElement("i", {className: "fa fa-tachometer"}), " Dashboard"), 
 			    	React.createElement("li", {onClick: function()  {return this.transitionTo('product');}.bind(this)}, React.createElement("i", {className: "fa fa-list-alt"}), " Products"), 
-			    	React.createElement("li", {onClick: function()  {return this.transitionTo('contact-info');}.bind(this)}, React.createElement("i", {className: "fa fa-user"}), " Profile")
+			    	React.createElement("li", {onClick: function()  {return this.transitionTo('contact-info');}.bind(this)}, React.createElement("i", {className: "fa fa-user"}), " Profile"), 
+			    	React.createElement("li", {onClick: function()  {return this.transitionTo('testing');}.bind(this)}, React.createElement("i", {className: "fa fa-flask"}), " Testing")
 			    )
 			)
 			); 

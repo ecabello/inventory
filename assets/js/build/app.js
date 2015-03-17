@@ -24,7 +24,7 @@ var AddProduct = require('./components/Product/AddProduct');
 var UpdateProduct = require('./components/Product/UpdateProduct');
 
 
-
+var TestingPage = require('./components/Testing/TestingPage');
  
  
 
@@ -55,9 +55,7 @@ var routes = (
     		React.createElement(Route, {name: "add-product", path: "add", handler: AddProduct}), 
             React.createElement(Route, {name: "update-product", path: ":id", handler: UpdateProduct})
         ), 
-    	React.createElement(Route, {name: "social", path: "social", handler: UnderConst}), 
-    	React.createElement(Route, {name: "locations", path: "locations", handler: UnderConst}), 
-    	React.createElement(Route, {name: "contact-info", path: "contact-info", handler: UnderConst}), 
+    	React.createElement(Route, {name: "testing", handler: TestingPage, path: "testing"}), 
     	React.createElement(NotFoundRoute, {handler: UnderConst})
     )
   ) 
