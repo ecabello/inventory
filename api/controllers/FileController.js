@@ -36,7 +36,7 @@ module.exports = {
 
 			// this is the queue's callback, called when the queue is empty,
 			queue.drain = function() {
-  			return res.json({status: 200, files: savedFiles});
+  			  return res.json({status: 200, files: savedFiles});
 			};
 
 			sails.log.info(files);
@@ -44,8 +44,14 @@ module.exports = {
 				queue.push({ file: files[i] }, function(err, file) {
 					if (err)
 						sails.log.info(err);
-					if (file)
+					if (file) {
+						// We dont need to do this anymore as we are making
+						// assets directory public
+						//var fs = require('fs');
+					  //fs.symlinkSync('assets/' + file.url, '.tmp/public/' + file.url);
+					  //fs.writeFileSync('.tmp/public/' + file.url, fs.readFileSync('assets/' + file.url));
 						savedFiles.push(file);
+					}
 				});
 			}
 		});
