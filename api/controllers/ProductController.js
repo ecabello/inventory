@@ -38,38 +38,38 @@ module.exports = {
     var userId = req.param('userid');
     if (!userId)
         return res.badRequest('No user id specified');
-        
-    Product.find({owner: userId}).exec(function(err, products) {
-        if (err)
-          return res.serverError(err.message);
-          
-        var async = require('async');
-		var queue = async.queue(function(task, callback) {
-		    File.find({id: task.product.images}, function(err, files) {
-		        callback(err, task.product, files);
-		    });
-		}, 2);          
-		
-        // this is the queue's callback, called when the queue is empty,
-        queue.drain = function() {
-  			return res.json(products);
-        };
 
-        for (var i=0; i<products.length; i++) {
-            var product = products[i];
-            var hasImages = product.images ? (product.images.length > 0) : false;
-            if (hasImages) {
-                queue.push({ product: product }, function(err, product, files) {
-					if (err)
-						sails.log.info(err);
-					if (files) {
+    Product.find({owner: userId}).exec(function(err, products) {
+      if (err)
+        return res.serverError(err.message);
+
+      var async = require('async');
+		  var queue = async.queue(function(task, callback) {
+		     File.find({id: task.product.images}, function(err, files) {
+		         callback(err, task.product, files);
+		     });
+		  }, 2);
+
+      // this is the queue's callback, called when the queue is empty,
+      queue.drain = function() {
+  			return res.json(products);
+      };
+
+      for (var i=0; i<products.length; i++) {
+        var product = products[i];
+        var hasImages = product.images ? (product.images.length > 0) : false;
+        if (hasImages) {
+          queue.push({ product: product }, function(err, product, files) {
+					  if (err)
+					    sails.log.info(err);
+	          if (files) {
 					    //for (var f=0; f<files.length; f++)
 					    //    sails.log.info(files[f].url);
-						product.images = files;
-					}
-				});
-            }
+						  product.images = files;
+					  }
+          });
         }
+      }
     });
   },
 
