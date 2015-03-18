@@ -1,6 +1,7 @@
 var React = require('react');
 var TopHeader = require('./../Texts/TopHeader');
 
+
 /* Component Testing !! */
 var Lightbox = require('./Lightbox');
 
@@ -15,7 +16,7 @@ var TestingPage = React.createClass({
 			<div className="small-12 columns">
 				<TopHeader text="Testing Side" />
 				<button onClick={ () => this.setState({ open : true }) }>Open Lightbox</button>
-				<Lightbox show={this.state.open} _onClose={ () => this.setState({ open : false }) }>
+				<Lightbox show={this.state.open}  _onClose={ () => this.setState({ open : false }) }>
 					Hola Rey !
 				</Lightbox>
 			</div>

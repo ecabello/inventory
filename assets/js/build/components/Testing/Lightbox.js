@@ -1,8 +1,19 @@
-var React = require('react');
+var React = require('react/addons');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup; 
+
 
 var	LightBox = React.createClass({displayName: "LightBox",
+	getDefaultProps :  function () {
+		return {
+			transition : 'fade'
+		}
+	},
 	render : function () {
-		return this.props.show ? this.show() : React.createElement("span", null);
+		return (
+			React.createElement(ReactCSSTransitionGroup, {transitionName:  this.props.transition}, 
+				 this.props.show ? this.show() : null
+			)
+		);	
 	},
 	show : function () {
 		return (

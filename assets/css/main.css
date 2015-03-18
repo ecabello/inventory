@@ -8936,6 +8936,28 @@ a.th {
   content: "\f20c";
 }
 
+/* line 1, src/CssTransition/_CssTransition.scss */
+.fade-enter {
+  opacity: 0.01;
+  transition: opacity .3s ease-in;
+}
+
+/* line 6, src/CssTransition/_CssTransition.scss */
+.fade-enter.fade-enter-active {
+  opacity: 1;
+}
+
+/* line 10, src/CssTransition/_CssTransition.scss */
+.fade-leave {
+  opacity: 1;
+  transition: opacity .3s ease-in;
+}
+
+/* line 15, src/CssTransition/_CssTransition.scss */
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+}
+
 /* line 1, src/components/_layout.scss */
 body {
   width: 100%;
@@ -9264,13 +9286,13 @@ img.galery {
   top: 4px;
 }
 
-/* line 7, src/main.scss */
+/* line 8, src/main.scss */
 #app {
   width: 100%;
   min-width: 1200px;
   height: 100%;
 }
-/* line 12, src/main.scss */
+/* line 13, src/main.scss */
 #app .appContainer {
   height: 100%;
   display: block;
