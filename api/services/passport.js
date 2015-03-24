@@ -50,13 +50,7 @@ passport.initStrategies=function() {
           if (!res)
             return done(null, false, {message: 'Invalid Password'});
           // Hash matched
-          var returnUser = {
-            id: user.id,
-            name: user.name,
-            username: user.username,
-            createdAt: user.createdAt
-          };
-          return done(null, returnUser, {message: 'Logged In Successfully'});
+          return done(null, user, {message: 'Logged In Successfully'});
         });
       });
     }
@@ -71,8 +65,6 @@ passport.initStrategies=function() {
       // If the user is found, return it.
       if (user)
         return done(null, user, {message: 'Logged In Successfully'});
-
-      //return done(null, false, {message: 'No user found'});
 
       // Not found, create one
       var data = {

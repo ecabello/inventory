@@ -28,8 +28,10 @@ module.exports.policies = {
 
   '*': true,
 
-  // Make sure Owner is set appropriately when creating and
-  // doesnt get overwritten whe updating.
+  UserController: {
+    update:  ['isLoggedIn']
+  },
+
   ProductController: {
     create: ['setLoggedUserAsOwner'],
     update:  ['isLoggedIn', 'preventOwnerChange'],

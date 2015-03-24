@@ -62,6 +62,10 @@ module.exports = {
   },
 
   beforeCreate: function(user, cb) {
+    this.hashPassword(user, cb);
+  },
+
+  hashPassword: function(user, cb) {
     // If user has password, store hash instead
     if ('password' in user) {
       bcrypt.genSalt(10, function(err, salt) {

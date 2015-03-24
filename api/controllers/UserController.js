@@ -40,9 +40,9 @@ module.exports = {
     },
 
     logged: function(req, res) {
-      if (req.isAuthenticated()) {
+      if (req.isAuthenticated())
         return res.json(req.user);
-      }
+
       return res.notFound('No user is logged in');
     },
 
@@ -75,6 +75,77 @@ module.exports = {
     logout: function(req, res) {
         req.logout();
         res.redirect('/');
+    },
+
+    create: function(req, res) {
+      var user = req.body ? req.body : req.params;
+      if (!user.username)
+        return res.badRequest('No username provided');
+
+      if (!user.password)
+        return res.badRequest('No password provided');
+
+      User.findOne({username: user.username}).exec(function(err, existing) {
+        if (err)
+          return res.serverError(err.message);
+
+        if (existing)
+          return res.badRequest('Specified username is already taken');
+
+        user.provider = 'local';
+        if (!('type' in user))
+            user.type = 'individual';
+
+        // Create User
+        User.create(user, function(err, user) {
+          if (err)
+            return res.serverError(err.message);
+
+          return res.json(user);
+        });
+      });
+    },
+
+    update: function(req, res) {
+      var fields = req.body ? req.body : req.params;
+
+      User.findOne({id: req.user.id}).exec(function(err, user) {
+        if (err)
+          return res.serverError(err.message);
+
+        if (!user)
+          return res.notFound('No record found with the specified id');
+
+        function saveUser(user) {
+          // Hash password
+          User.hashPassword(fields, function(err){
+            if (err)
+              return res.serverError(err.message);
+
+            // Update the user
+            User.update({id: user.id}, fields).exec(function(err, users) {
+              if (err)
+                return res.serverError(err.message);
+
+              return res.json(users[0]);
+            });
+          });
+        }
+        // If trying to change username, check for collisions...
+        if ('username' in fields) {
+          User.findOne({username: fields.username}).exec(function(err, existing) {
+            if (err)
+              return res.serverError(err.message);
+            // if existing and not the same user
+            if (existing && existing.id != user.id)
+              return res.badRequest('Specified username is already taken');
+            else
+              saveUser(user);
+          });
+        }
+        else
+          saveUser(user);
+      });
     }
 };
 
@@ -84,5 +155,5 @@ module.exports.blueprints = {
     // Expose a RESTful API
     rest: true,
     // Expose simple CRUD shortcuts
-    shortcuts: true
+    shortcuts: false
 };

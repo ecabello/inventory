@@ -62,6 +62,11 @@ module.exports.routes = {
     action: 'logged'
   },
 
+  'PUT /user': {
+    controller: 'UserController',
+    action: 'update'
+  },
+
   '/google/login': {
     controller: 'UserController',
     action: 'googleLogin'
@@ -136,7 +141,7 @@ module.exports.routes = {
   '/upload':{
     view: 'upload'  // 'uploadfile' view
   },
-  
+
   'GET /product/user/:userid' : {
     controller: 'ProductController',
     action: 'userProducts'
